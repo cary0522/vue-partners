@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Baloo+Bhaijaan+2:wght@400..800&family=Bungee+Shade&family=Caveat+Brush&family=Comic+Neue:wght@300&family=Concert+One&family=Darumadrop+One&family=Dela+Gothic+One&family=Fugaz+One&family=Itim&family=Klee+One&family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nanum+Pen+Script&family=Noto+Sans+TC:wght@100..900&family=Protest+Riot&family=Rubik+Doodle+Shadow&family=Share+Tech+Mono&family=Yusei+Magic&family=Zen+Maru+Gothic&family=Zen+Old+Mincho&display=swap");
+@import 'bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+$colorText: rgba(118, 143, 223,.8);
+$colorGreen:rgba(145, 209, 190,.8);
+$colorRed: #ec7b7d;
+$colorMain: #ecb572;
+$colorWhite: White;
+$colorInput: rgba(118, 143, 223, 0.2);
+$colorBtn: rgb(229, 229, 229);
+$colorBtnLinear: linear-gradient(
+	270deg,
+	rgba(230, 217, 114, 0.6),
+	rgba(136, 215, 255, 0.6)
+);
+$colorBtn2Linear: linear-gradient(
+	270deg,
+	#ec7b7d,
+	#ecb572
+);
+$backGroundLinear: linear-gradient(
+	90deg,
+	rgba(118, 143, 223, 0.6),
+	rgba(145, 209, 190, 0.6)
+);
+body {
+	background-color: rgba(255, 245, 231, 0.3);
+	font-family: "Share Tech Mono", monospace, "Noto Sans TC", sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+img {
+	max-width: 100%;
+	object-fit: contain;
+}
+
+.button{
+	padding: 20px 50px;
+	border: none;
+	border-radius: 20px;
+	margin: 20px;
+	box-shadow: inset -2px 2px 5px rgba(251, 254, 255, 0.885) , 0px 2px 5px rgba(176, 176, 176, 0.819);
+	@keyframes bgColor {
+		0%{background:linear-gradient(
+			90deg,
+			#ec7b7d 10%,
+			#ecb572
+		);}
+		25%{background:linear-gradient(
+			90deg,
+			#ecb572 0%,
+			#ec7b7d 25%,
+			#ecb572 100%
+		);}
+		50%{background:linear-gradient(
+			90deg,
+			#ecb572 0%,
+			#ec7b7d 50%,
+			#ecb572 100%
+		);}
+		75%{background:linear-gradient(
+			90deg,
+			#ecb572 0%,
+			#ec7b7d 75%,
+			#ecb572 100%
+		);}
+		100%{background:linear-gradient(
+			90deg,
+			#ecb572,
+			#ec7b7d,
+		);}
+	}
+	&:hover{
+		animation: bgColor .2s forwards;
+		transform: scale(1.2);
+		transition: all .5s;
+	}
+}
+
+.bgText{
+	font-size: 8rem;
+	color: transparent;
+	-webkit-text-stroke: 2px rgba(236, 181, 114,.6);
+	z-index: -2;
+	position: absolute;
+}
+.divTitle{
+	text-align: center;
+	letter-spacing: 2.5px;
+	line-height: 1.5;
+}
+

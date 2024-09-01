@@ -1,0 +1,170 @@
+@import "/src/assets/initSet.scss";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Baloo+Bhaijaan+2:wght@400..800&family=Bungee+Shade&family=Caveat+Brush&family=Comic+Neue:wght@300&family=Concert+One&family=Darumadrop+One&family=Dela+Gothic+One&family=Fugaz+One&family=Itim&family=Klee+One&family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nanum+Pen+Script&family=Noto+Sans+TC:wght@100..900&family=Protest+Riot&family=Rubik+Doodle+Shadow&family=Share+Tech+Mono&family=Yusei+Magic&family=Zen+Maru+Gothic&family=Zen+Old+Mincho&display=swap');
+.memberPage {
+	font-family: "Baloo Bhaijaan 2","Noto Sans TC", "Arial", sans-serif;
+	position: relative;
+	label {
+		width: 100%;
+		color: $colorText;
+		font-weight: 500;
+		font-size: 1.2rem;
+		margin: 10px auto;
+	}
+	input {
+		border-radius: 20px;
+		border: none;
+		background-color: $colorInput;
+		width: 60%;
+		padding: 5px 15px;
+		margin: 0 10%;
+		box-sizing: border-box;
+		box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4),
+			2px 2px 5px rgba(118, 143, 223, 0.3);
+	}
+	.button {
+		border: none;
+		border-radius: 20px;
+		background-color: $colorBtn;
+		padding: 5px 20px;
+		margin: 10px;
+		box-shadow: inset -2px 5px 5px rgba(255, 255, 255, 0.4),
+			2px 3px 4px rgb(202, 201, 201, 0.4);
+	}
+	#divAlert {
+		position: absolute;
+		border-radius: 20px;
+		padding: 50px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 10;
+		background-color: rgba(210, 200, 200, 0.6);
+		text-align: center;
+		max-width: 350px;
+		h3 {
+			font-size: 1.2rem;
+			font-weight: 500;
+		}
+		svg {
+			margin: 10px auto;
+			font-size: 40px;
+		}
+		p {
+			color: black;
+			letter-spacing: 1.5px;
+			line-height: 1.2;
+			margin: 10px auto;
+		}
+		#alertBtn {
+			padding: 10px 30px;
+			margin: 10px auto;
+			border-radius: 20px;
+			border: none;
+			background-color: antiquewhite;
+			cursor: pointer;
+		}
+		#closeBtn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+		}
+	}
+	.btnDiv {
+		margin: 50px auto;
+		display: flex;
+		justify-content: center;
+	}
+	.divOutside {
+		border: 3px dotted rgb(253, 238, 238);
+		width: 50%;
+		height: 400px;
+		margin: 50px auto;
+		padding: 20px;
+		.divInput {
+			width: 80%;
+			margin: 50px auto;
+		}
+	}
+	#divMember {
+		display: flex;
+		margin: 0 auto;
+		justify-content: space-between;
+		padding: 30px;
+		#divMemberOption {
+			width: 20%;
+			border-radius: 50px;
+			border: 1px solid black;
+			padding: 50px 20px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+
+			div {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+			}
+		}
+		#divMemberPhoto {
+			width: 80%;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			form {
+				width: 50%;
+				display: flex;
+				align-items: center;
+			}
+			img,
+			input {
+				width: 50%;
+				margin: 10px auto;
+				background-color: transparent;
+				border: 1px solid black;
+			}
+		}
+		#divMemberAccount {
+			width: 80%;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			padding: 20px;
+			.divInput {
+				width: 50%;
+				display: flex;
+				flex-wrap: wrap;
+				margin: 10px 0;
+			}
+			.divBtn {
+				width: 100%;
+				display: flex;
+				div {
+					margin: 10px 50px 10px auto;
+				}
+			}
+		}
+		#divMemberPassword {
+			width: 80%;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			padding: 20px;
+			.divInput {
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+				margin: 10px auto;
+				label {
+					width: 50%;
+					margin: 10px auto;
+				}
+				input {
+					width: 50%;
+					margin: 10px auto;
+				}
+			}
+		}
+	}
+}
