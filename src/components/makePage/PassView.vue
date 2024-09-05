@@ -33,7 +33,7 @@ import { faPaw } from '@fortawesome/free-solid-svg-icons';
                 <FontAwesomeIcon :icon="faPaw"></FontAwesomeIcon>
             </div>
         </div>
-        <h1 class="loading-text my-5 darkText">請稍候，正在努力製作您的專屬寵物</h1>
+        <h1 class="loading-text my-5 mx-auto darkText">請稍候，正在努力製作您的專屬寵物</h1>
     </div>
 
 </template>

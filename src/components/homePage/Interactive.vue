@@ -1,6 +1,6 @@
 <script setup>
 import Title from './Title.vue';
-import OptionBehaviors from './OptionBehaviors.vue';
+import OptionBehaviors from '../OptionBehaviors.vue';
 import { reactive } from 'vue';
 import { faHandHoldingHeart, faHandHoldingDollar, faThumbsUp, faUtensils, faDroplet, faShower, faGamepad, faPersonWalking, faToilet } from '@fortawesome/free-solid-svg-icons';
 const optionList = reactive([

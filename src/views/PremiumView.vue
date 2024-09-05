@@ -19,7 +19,7 @@ axios.get('http://localhost:3000/premium').then((res) => {
 
 <template>
   <div id="premiumPage">
-    <div class="plan plan-one rounded my-3 p-2 mx-auto col-12">
+    <div class="plan plan-one rounded my-3 p-2 mx-auto col-10">
       <h3 class="my-1">解鎖夥伴</h3>
       <div class="row flex-wrap justify-content-center" id="petGoodList">
         <div v-for="petGood in good.data" class='pet-card position-relative col-6 col-lg-3 my-2'>

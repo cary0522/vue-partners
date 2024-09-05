@@ -17,7 +17,8 @@ const data = reactive({
     appearanceRight: 1,
     traitUser: ['', '', '', ''],
     appearanceUser: ['', '', '', ''],
-    clickTime: 0
+    clickTime: 0,
+    partnerName:'小王'
 })
 
 const clickTimeCount = () => {
@@ -46,11 +47,24 @@ const makeDone = () => {
     setTimeout(() => {
         window.open('/partners', '_self')
     }, 2800)
+    axios.post('http://localhost:3000/data/userOptions', {
+        "partnerName":data.partnerName,
+        "appearanceOne": data.appearanceUser[0],
+        "appearanceTwo": data.appearanceUser[1],
+        "appearanceThree": data.appearanceUser[2],
+        "appearanceFour": data.appearanceUser[3],
+        "traitOne": data.traitUser[0],
+        "traitTwo": data.traitUser[1],
+        "traitThree": data.traitUser[2],
+        "traitFour": data.traitUser[3]
+    }).then(response => {
+        console.log(response)
+    })
+
 }
 
 
-
-const footStyle = ()=>{
+const footStyle = () => {
     console.log(data.clickTime)
 }
 
@@ -112,7 +126,7 @@ axios.get('http://localhost:3000/data/appearance').then((res) => {
                 id="make-content" v-else-if="data.clickTime == 8">
                 <div class="input-group my-3 mx-auto flex-nowrap ms-1">
                     <span class="input-group-text inputGroup-sizing-lg">輸入名稱</span>
-                    <input type="text" class="form-control" id='name-text' required value='小美'>
+                    <input type="text" class="form-control" id='name-text' required v-model="data.partnerName">
                 </div>
                 <div class='col-10 col-md-3 my-3 mx-auto'>
                     <button type="button" class="btn" id='make-done' v-on:click="makeDone">

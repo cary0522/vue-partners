@@ -53,11 +53,12 @@
 			height: 120px;
 			position: absolute;
 			top: 30%;
-			left: 55%;
+			left: 50%;
 			transform: translate(-50%, -50%);
 			.loadingFootprint {
 				font-size: 50px;
 				transform: rotate(90deg);
+                width: 80%;
 				svg {
 					color: #a7a7a7;
 				}
@@ -111,6 +112,7 @@
 				}
 			}
 			.loading-text {
+                width: 80%;
 				text-align: center;
 				color: $colorText;
 			}

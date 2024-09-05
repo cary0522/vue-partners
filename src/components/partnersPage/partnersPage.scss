@@ -1,0 +1,130 @@
+@import "/src/assets/initSet.scss";
+
+#partnersPage {
+    // 基本資料樣式
+	.grid-item1 {
+        h2{
+            text-align: center;
+            color: $colorGreen;
+        }
+        p{
+            color: $colorText;
+        }
+		#photo img {
+			width: 50%;
+			object-fit: contain;
+		}
+		@media screen and (min-width: 1500px) {
+			#photo img {
+				width: 40%;
+			}
+		}
+	}
+    // 互動區域樣式
+    .grid-item2{
+        h2{
+            text-align: center;
+            color: $colorGreen;
+        }
+        .partnersIphone {
+            height: 40rem;
+            border-radius: 25px;
+            box-shadow: 0 0 5px rgb(197, 167, 167),
+                -5px -5px 5px rgba(227, 227, 227, 0.5) inset,
+                5px 5px 5px rgba(255, 248, 248, 0.5) inset;
+            .iphoneTitle {
+                margin-left: 0;
+                p {
+                    color: $colorText;
+                }
+            }
+            .phoneIcon {
+                width: 30%;
+                display: flex;
+                justify-content: space-around;
+                margin-right: 0;
+                svg {
+                    color: $colorText;
+                }
+            }
+        }
+        #interactive-partner-photo {
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        #interactive-partner-feedback {
+            overflow-y: auto;
+            height: 25em;
+        }
+        #interactive {
+            overflow-x: auto;
+            .options-behaviors {
+                margin: 5px;
+                text-align: center;
+                background-color: $colorText;
+                border-radius: 30px;
+                &:hover {
+                    transform: scale(1.1);
+                    cursor: pointer;
+                }
+                svg {
+                    color: $colorWhite;
+                }
+                .card-text {
+                    color: $colorWhite;
+                }
+            }
+        }
+    }
+
+    // 腳印樣式
+	.partnersFootprintContainer {
+		width: 100px;
+		height: 60%;
+		bottom: 3%;
+		left: 5%;
+		line-height: 70px;
+		transform: rotate(-10deg);
+		z-index: -1;
+		.partnersFootprintItem {
+			svg {
+				font-size: 30px;
+			}
+			&:nth-child(odd) {
+				width: 50%;
+				margin-right: auto;
+				transform: rotate(-5deg);
+				color: rgb(190, 190, 190);
+				opacity: 0.4;
+			}
+			&:nth-child(even) {
+				width: 50%;
+				margin-left: auto;
+				transform: rotate(5deg);
+				color: rgb(190, 190, 190);
+				opacity: 0.4;
+			}
+		}
+	}
+    // RWD
+	@media screen and (min-width: 992px) {
+		.grid-container {
+			display: grid;
+			grid-template-columns: 12.5% 25% 25% 25% 12.5%;
+		}
+		.grid-item1 {
+			grid-column: 2 / span 1;
+			grid-row: 1;
+		}
+		.grid-item2 {
+			grid-column: 3 / span 2;
+			grid-row: 1 / span 2;
+		}
+		.grid-item3 {
+			grid-column: 2 / span 1;
+			grid-row: 2;
+		}
+	}
+}
