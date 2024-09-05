@@ -1,8 +1,8 @@
 <script setup>
-defineProps(['btnContent','onClickFunction'])
+defineProps(['btnContent', 'onClickFunction'])
 </script>
 <template>
-    <div>
-        <button class="button" @click='onClickFunction'>{{btnContent}}</button>
+    <div class="divBtn">
+        <button type="button" class="button" @click='onClickFunction'>{{ btnContent }}</button>
     </div>
 </template>
