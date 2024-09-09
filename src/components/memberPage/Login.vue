@@ -43,6 +43,8 @@ const loginFunction = async (e) => {
             }).then((res) => {
                 alert(res.data.message)
                 cookies.set('token',res.data.token)
+            }).then(()=>{
+                window.location='/Member'
             })
         } catch (err) {
             console.log(err)

@@ -10,8 +10,9 @@ const photoUpload = (e) => {
         data: userPhoto.value,
     }).then(res => {
         alert(res.data.message)
+    }).then(()=>{
+        window.location='/Member'
     })
-    console.log('upload ok')
 }
 
 // 預覽圖片

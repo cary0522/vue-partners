@@ -9,8 +9,9 @@ const memberAccountClick = () => {
         data:userData.value
     }).then(res=>{
         alert(res.data.message)
+    }).then(()=>{
+        window.location='/Member'
     })
-    console.log('click')
 }
 </script>
 <template>
