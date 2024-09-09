@@ -3,20 +3,24 @@ import axios from 'axios';
 import Button from '../Button.vue';
 let userPhoto = defineModel()
 
+// 上傳圖片
 const photoUpload = (e) => {
     e.preventDefault();
     axios.post('http://localhost:3000/member/uploadPhoto', {
-        data: userPhoto.value
+        data: userPhoto.value,
     }).then(res => {
         alert(res.data.message)
     })
     console.log('upload ok')
 }
+
+// 預覽圖片
 function previewFiles(e) {
     let updatePhoto = e.target.files[0]
     const reader = new FileReader();
     reader.onload = function (e) {
-        return userPhoto.value.photo = e.target.result
+        userPhoto.value.photo = e.target.result
+        userPhoto.value.photoType = updatePhoto.type
     };
     reader.readAsDataURL(updatePhoto);
 }

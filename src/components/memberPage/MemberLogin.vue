@@ -1,5 +1,5 @@
 <script setup>
-import { reactive,ref } from 'vue';
+import { reactive } from 'vue';
 import axios from 'axios';
 import { useCookies } from 'vue3-cookies';
 import MemberOption from './MemberOption.vue';
@@ -18,7 +18,8 @@ const userData = reactive({
 })
 const userPhoto = reactive({
     account:'',
-    photo:''
+    photo:'',
+    photoType:''
 })
 
 // 取得會員資料
@@ -31,9 +32,11 @@ axios.post('http://localhost:3000/member/userData', {
     userData.location.value = res.data.location?res.data.location:''
     userData.phone.value = res.data.phone?res.data.phone:''
     userData.userName.value = res.data.userName?res.data.userName:''
-    userPhoto.account = res.data.
-    // photo String to base64
-    userPhoto.photo = res.data.photo?"data:image/+;base64,"+res.data.photo:''
+    userPhoto.account = res.data.account
+    // 取得圖片格式
+    const photoType = res.data.photoType
+    userPhoto.photo = res.data.photo?`data:image/${photoType};base64,`+res.data.photo:''
+    userPhoto.photoType = res.data.photoType?res.data.photoType:''
 })
 
 // 左邊按鈕控制右邊顯示內容

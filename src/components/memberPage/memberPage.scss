@@ -107,20 +107,21 @@
 			}
 		}
 		#divMemberPhoto {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
+			text-align: center;
+			padding: 20px;
 			form {
-				width: 50%;
-				display: flex;
-				align-items: center;
+				width: 100%;
+				input{
+					width: auto;
+					margin: 10px;
+					text-align: start;
+				}
 			}
-			img,
-			input {
+			img{
 				width: 50%;
 				margin: 10px auto;
 				background-color: transparent;
-				border: 1px solid black;
+				border: 1px dashed rgb(203, 203, 203);
 			}
 		}
 		#divMemberAccount {

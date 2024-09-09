@@ -15,7 +15,6 @@ const user = reactive({
 const vueRecaptchaV2 = reactive({
     sitekey: '6LdRjSAqAAAAAD2gHHS7x-V31XSDTx01FC3pzsRK',
     recaptchaVerified: (response_token) => {
-        console.log(response_token);
         user.googleToken = response_token
         // 連接後端API，給後端進行認證
     },
@@ -31,7 +30,6 @@ const vueRecaptchaV2 = reactive({
 
 const {cookies} = useCookies();
 const cookiesToken = cookies.get('token')
-console.log('cookieToken:',cookiesToken)
 
 const loginFunction = async (e) => {
     if (!user.googleToken) {

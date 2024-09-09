@@ -11,7 +11,7 @@ const good = reactive({
 axios.get('http://localhost:3000/premium').then((res) => {
   good.data = res.data
   console.log('ok')
-  console.log(good.data)
+  // console.log(good.data)
   return (good.data)
 })
 
