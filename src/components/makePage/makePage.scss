@@ -30,7 +30,6 @@
 			transform: translate(0, 0);
 		}
 	}
-	/* 已選選項及剪影間的關連線 */
 	/* 剪影彈跳效果 */
 	@keyframes blindAnimation {
 		0% {
@@ -40,8 +39,6 @@
 			transform: scale(1.2);
 		}
 	}
-	/* 已選擇區域的外表、特質卡 */
-	/* 製作完成按鈕 */
 	/* RWD */
 
 	/* 腳印部分、前進效果 */
@@ -58,17 +55,17 @@
 			.loadingFootprint {
 				font-size: 50px;
 				transform: rotate(90deg);
-                width: 80%;
+				width: 80%;
 				svg {
 					color: #a7a7a7;
 				}
 				&:nth-child(odd) {
 					height: 50%;
-					margin-top: auto;
+					margin-top: 50px;
 				}
 				&:nth-child(even) {
 					height: 50%;
-					margin-bottom: auto;
+					margin-top: 0;
 				}
 				&:nth-child(1) {
 					svg {
@@ -112,9 +109,10 @@
 				}
 			}
 			.loading-text {
-                width: 80%;
+				width: 80%;
 				text-align: center;
 				color: $colorText;
+				font-size: 2rem;
 			}
 		}
 		@keyframes loadingFootprintGoHead {
@@ -127,51 +125,141 @@
 		}
 	}
 
-	#make-container {
-		margin-top: 3%;
-	}
 	.option-content {
 		height: 85vh;
-		h1 {
-			width: 100%;
-			text-align: center;
-			color: $colorMain;
-			background-image: linear-gradient(
-				transparent 50%,
-				rgba(194, 187, 187, 0.6) 50%
-			);
-			margin-left: 10%;
-			margin-right: 10%;
-		}
 		div {
 			text-align: center;
 		}
-	}
-	.radioOption {
-		display: none;
-		&:hover + .radioLabel {
-			transform: scale(1.1);
-			box-shadow: 0 0 3px $colorMain;
+		#make-container {
+			margin-top: 3%;
+			h1 {
+				font-size: 2rem;
+				width: 100%;
+				text-align: center;
+				color: $colorMain;
+				background-image: linear-gradient(
+					transparent 50%,
+					rgba(194, 187, 187, 0.6) 50%
+				);
+			}
+			#make-content {
+				#divInput {
+					border: 1px solid $colorMain;
+					border-radius: 20px;
+					align-items: center;
+					margin: 20px;
+					padding: 20px 50px;
+					font-size: 25px;
+					color: $colorMain;
+					input {
+						background-color: transparent;
+					}
+				}
+			}
 		}
-	}
-	.radioLabel {
-		font-size: 30px;
-		border: 2px solid $colorMain;
-		border-radius: 30px;
-		color: $colorMain;
-		border-radius: 5px;
-		padding-left: 20px;
-		padding-right: 20px;
-		padding-top: 10px;
-		padding-bottom: 10px;
-	}
-	.orContent {
-		font-size: 30px;
-		align-content: center;
-		color: $colorMain;
-	}
-	.radioLabelFlip {
-		animation: flipCard 0.8s ease-in-out;
+
+		.radioOption {
+			display: none;
+			&:hover + .radioLabel {
+				transform: scale(1.1);
+				box-shadow: 0 0 3px $colorMain;
+			}
+		}
+		.radioLabel {
+			font-size: 30px;
+			border: 2px solid $colorMain;
+			border-radius: 30px;
+			color: $colorMain;
+			border-radius: 5px;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		.orContent {
+			font-size: 30px;
+			align-content: center;
+			color: $colorMain;
+		}
+		.radioLabelFlip {
+			animation: flipCard 0.8s ease-in-out;
+		}
+		/* 已選選項及剪影間的關連線 */
+		.divTrait {
+			&:nth-of-type(1) {
+				.relateLineTrait {
+					transform: rotate(-15deg);
+				}
+			}
+			&:nth-of-type(2) {
+				.relateLineTrait {
+					transform: rotate(-5deg);
+				}
+			}
+			&:nth-of-type(3) {
+				.relateLineTrait {
+					transform: rotate(5deg);
+				}
+			}
+			&:nth-of-type(4) {
+				.relateLineTrait {
+					transform: rotate(15deg);
+				}
+			}
+			.relateLineTrait {
+				border-bottom: 2px dashed $colorMain;
+				height: 30px;
+				width: 100%;
+				display: none;
+				@media screen and (min-width: 768px) {
+					display: block;
+				}
+			}
+		}
+		.divAppearance {
+			&:nth-of-type(1) {
+				.relateLine {
+					transform: rotate(15deg);
+				}
+			}
+			&:nth-of-type(2) {
+				.relateLine {
+					transform: rotate(5deg);
+				}
+			}
+			&:nth-of-type(3) {
+				.relateLine {
+					transform: rotate(-5deg);
+				}
+			}
+			&:nth-of-type(4) {
+				.relateLine {
+					transform: rotate(-15deg);
+				}
+			}
+			.relateLine {
+				border-bottom: 2px dashed $colorMain;
+				height: 30px;
+				width: 100%;
+				display: none;
+				@media screen and (min-width: 768px) {
+					display: block;
+				}
+			}
+		}
+		/* 已選擇區域的外表、特質卡 */
+		.traitCard,
+		.appearanceCard {
+			width: 100%;
+			height: 50px;
+			border: 2px dashed $colorMain;
+			padding: 5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: $colorRed;
+			font-size: 1.2rem;
+		}
 	}
 	// .checkedOption {
 	// 	font-size: 16px;
@@ -189,12 +277,7 @@
 	// .checkedAppearance {
 	// 	animation: checkedAppearance 0.5s ease-in;
 	// }
-	.relateLine {
-		border-bottom: 2px dashed $colorMain;
-		height: 30px;
-		width: 100%;
-		display: none;
-	}
+
 	.blindImgAnimation {
 		animation: blindAnimation 0.3s linear;
 	}
@@ -207,42 +290,8 @@
 			border-radius: 50%;
 		}
 	}
-	.appearanceCard {
-		width: 100%;
-		height: 50px;
-		border: 2px dashed $colorMain;
-		padding: 5px;
-		// .relateLine:nth-of-type(1) {
-		// 	transform: rotate(15deg);
-		// }
-		// .relateLine:nth-of-type(2) {
-		// 	transform: rotate(5deg);
-		// }
-		// .relateLine:nth-of-type(3) {
-		// 	transform: rotate(-5deg);
-		// }
-		// .relateLine:nth-of-type(4) {
-		// 	transform: rotate(-15deg);
-		// }
-	}
-	.traitCard {
-		width: 100%;
-		height: 50px;
-		border: 2px dashed $colorMain;
-		padding: 5px;
-		// .relateLine:nth-of-type(1) {
-		// 	transform: rotate(-15deg);
-		// }
-		// .relateLine:nth-of-type(2) {
-		// 	transform: rotate(-5deg);
-		// }
-		// .relateLine:nth-of-type(3) {
-		// 	transform: rotate(5deg);
-		// }
-		// .relateLine:nth-of-type(4) {
-		// 	transform: rotate(15deg);
-		// }
-	}
+
+	/* 製作完成按鈕 */
 	#make-done {
 		font-size: 25px;
 		border: 1px solid $colorMain;
@@ -263,7 +312,7 @@
 		.footprintItem {
 			svg {
 				transform: rotate(90deg);
-				font-size: 30px;
+				font-size: 40px;
 				color: rgb(175, 175, 175);
 				opacity: 0.8;
 			}
@@ -291,9 +340,6 @@
 			font-size: 24px;
 		}
 		#blindImg {
-			display: block;
-		}
-		.relateLine {
 			display: block;
 		}
 		#footDiv {

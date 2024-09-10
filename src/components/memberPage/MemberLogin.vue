@@ -98,8 +98,8 @@ const options = reactive([
     <h4>
         login done
     </h4>
-    <div id="divMember">
-        <MemberOption v-model="options" class="col-2"></MemberOption>
-        <MemberOptionView v-model:options="options" v-model:userData="userData" v-model:userPhoto="userPhoto" class="col-8"></MemberOptionView>
+    <div id="divMember" class="h-full">
+        <MemberOption v-model="options" class="w-1/6"></MemberOption>
+        <MemberOptionView v-model:options="options" v-model:userData="userData" v-model:userPhoto="userPhoto" class="w-2/3"></MemberOptionView>
     </div>
 </template>

@@ -54,26 +54,26 @@ const optionList = reactive([
 </script>
 
 <template>
-    <div class="flex-lg-column grid-item grid-item2 text-start">
-        <div class="col-12">
-            <h2 class="p-3 highlight">
+    <div class="lg:flex-col grid-item grid-item2 text-start">
+        <div class="w-full">
+            <h2 class="p-4">
                 來跟你的夥伴互動吧！
             </h2>
-            <div class="container col-12 col-md-8 col-lg-10 mx-auto my-4">
-                <div class="partnersIphone bg-white w-100 position-relative">
-                    <div class="d-flex justify-content-between px-3 py-2">
+            <div class="w-full md:w-2/3 lg:w-5/6 mx-auto my-6">
+                <div class="partnersIphone bg-white w-full relative">
+                    <div class="flex justify-between px-4 py-2">
                         <PhoneTitle></PhoneTitle>
                     </div>
-                    <div class="container-fluid text-start fs-3 lightText" id="interactive-partner-name"></div>
-                    <div class="py-3 my-2" id="interactive-partner-feedback">
-                        <div class="d-flex justify-content-start">
+                    <div class="w-full text-start text-2xl" id="interactive-partner-name"></div>
+                    <div class="py-4 my-2" id="interactive-partner-feedback">
+                        <div class="flex justify-start">
                             <div class="iphone-pic ms-2" id="interactive-partner-photo"></div>
-                            <div class="position-relative">
+                            <div class="relative">
                                 <p class="partner-text">Hi</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-10 mx-auto d-flex flex-nowrap" id="interactive">
+                    <div class="w-5/6 px-4 mx-auto flex flex-nowrap" id="interactive">
                         <OptionBehaviors v-for="option in optionList" :optionId="option.id" :optionName='option.title'
                             :optionClass='option.class'></OptionBehaviors>
                     </div>

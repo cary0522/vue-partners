@@ -17,10 +17,10 @@ const loadingShow = () => {
 
 <template>
   <div id="makePage">
-    <div v-if="loading.show" id="loading" class="row">
+    <div v-if="loading.show" id="loading" class="flex flex-row">
       <PassView></PassView>
     </div>
-    <div class="container-fluid d-flex justify-content-center p-3 position-relative">
+    <div class="w-full flex justify-center p-4 relative">
       <MakeArea :loadingShowFunction="loadingShow" :loadingShow="loading.show"></MakeArea>
     </div>
 

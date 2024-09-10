@@ -4,8 +4,10 @@
 .memberPage {
 	// font-family: "Baloo Bhaijaan 2","Noto Sans TC", "Arial", sans-serif;
 	position: relative;
+	height: 100vh;
 	label {
 		width: 100%;
+		display: block;
 		color: $colorText;
 		font-weight: 500;
 		font-size: 1.2rem;
@@ -87,6 +89,8 @@
 		}
 	}
 	#divMember {
+		max-height: 100vh;
+		min-height: 80vh;
 		display: flex;
 		width: 100%;
 		margin: 0 auto;
@@ -144,10 +148,10 @@
 			}
 		}
 		#divMemberPassword {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-around;
 			padding: 20px;
+			p{
+				color: $colorText;
+			}
 			.divInput {
 				width: 100%;
 				display: flex;

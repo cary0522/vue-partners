@@ -46,9 +46,9 @@ const optionList = reactive([
 <template>
     <div id="interactive">
         <Title :title='"互動選項"' :titleContent="'Interactive with me'"></Title>
-        <div className="homepage-part3 container-fluid text-center my-5">
-            <div className="p-3">
-                <div className="container-fluid d-flex justify-content-center flex-wrap p-0">
+        <div class="homepage-part3 w-full text-center my-12">
+            <div class="p-4">
+                <div class="w-full flex justify-center flex-wrap p-0">
                     <OptionBehaviors v-for="option in optionList" :optionName='option.title'
                         :optionClass='option.class' />
                 </div>

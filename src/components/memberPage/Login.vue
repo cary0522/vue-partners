@@ -28,7 +28,7 @@ const vueRecaptchaV2 = reactive({
     },
 })
 
-const {cookies} = useCookies();
+const { cookies } = useCookies();
 const cookiesToken = cookies.get('token')
 
 const loginFunction = async (e) => {
@@ -42,9 +42,9 @@ const loginFunction = async (e) => {
                 'g-recaptcha-response': user.googleToken
             }).then((res) => {
                 alert(res.data.message)
-                cookies.set('token',res.data.token)
-            }).then(()=>{
-                window.location='/Member'
+                cookies.set('token', res.data.token)
+            }).then(() => {
+                window.location = '/Member'
             })
         } catch (err) {
             console.log(err)
@@ -55,13 +55,11 @@ const loginFunction = async (e) => {
 </script>
 
 <template>
-    <div class="col-10 border p-5 d-flex flex-column align-items-center">
-        <Input :input-type="'mail'" :inputId="'account'" :label-content="'帳號：'" :placeHolder="'請輸入帳號'"
-            v-model="user.account"></Input>
-        <Input :input-type="'password'" :inputId="'password'" :label-content="'密碼：'" :placeHolder="'請輸入密碼'"
-            v-model="user.password"></Input>
-        <VueRecaptcha :sitekey="vueRecaptchaV2.sitekey" size="normal" hl="en" @verify="vueRecaptchaV2.recaptchaVerified"
-            @expire="vueRecaptchaV2.recaptchaExpired" @fail="vueRecaptchaV2.recaptchaVerified"></VueRecaptcha>
-        <Button :btn-type="'button'" :btn-content="'登入'" :onClickFunction="loginFunction"></Button>
-    </div>
+    <Input :input-type="'mail'" :inputId="'account'" :label-content="'帳號：'" :placeHolder="'請輸入帳號'"
+        v-model="user.account"></Input>
+    <Input :input-type="'password'" :inputId="'password'" :label-content="'密碼：'" :placeHolder="'請輸入密碼'"
+        v-model="user.password"></Input>
+    <VueRecaptcha :sitekey="vueRecaptchaV2.sitekey" size="normal" hl="en" @verify="vueRecaptchaV2.recaptchaVerified"
+        @expire="vueRecaptchaV2.recaptchaExpired" @fail="vueRecaptchaV2.recaptchaVerified"></VueRecaptcha>
+    <Button :btn-type="'button'" :btn-content="'登入'" :onClickFunction="loginFunction"></Button>
 </template>

@@ -84,71 +84,73 @@ axios.get('http://localhost:3000/data/appearance').then((res) => {
 </script>
 
 <template>
-    <div class="option-content col-9 col-md-12 col-lg-8 p-3">
-        <div class="container-fluid col-12" id="make-container">
-            <h1 id="makePart" class="m-0 mx-md-auto" v-if="(data.clickTime < 4)">選擇寵物外表</h1>
-            <h1 id="makePart" class="m-0 mx-md-auto" v-else-if="(data.clickTime >= 4 && data.clickTime <= 7)">選擇寵物特質
+    <div class="option-content w-4/4 md:w-full lg:w-2/3 p-6">
+        <div class="w-full" id="make-container">
+            <h1 id="makePart" class="m-0 md:mx-auto" v-if="(data.clickTime < 4)">選擇寵物外表</h1>
+            <h1 id="makePart" class="m-0 md:mx-auto" v-else-if="(data.clickTime >= 4 && data.clickTime <= 7)">選擇寵物特質
             </h1>
-            <h1 id="makePart" class="m-0 mx-md-auto" v-else>請為寵物命名</h1>
-            <div class="col-12 my-2 mx-auto py-4 px-2 align-self-center d-md-flex justify-content-md-between"
+            <h1 id="makePart" class="m-0 md:mx-auto" v-else>請為寵物命名</h1>
+            <div class="w-full my-2 mx-auto py-6 px-2 self-center md:flex md:justify-between"
                 id="make-content" v-if="data.clickTime < 4">
-                <div class='col-12 col-md-5'>
-                    <input type="radio" id="appearance-left" name='option' class="col-6 radioOption"
+                <div class='w-full md:w-5/12'>
+                    <input type="radio" id="appearance-left" name='option' class="w-1/2 radioOption"
                         :value="data.appearanceList[data.appearanceLeft]" v-on:click="clickAppearance">
                     <label for='appearance-left' id='appearance-left' class='radioLabel'>{{
                         data.appearanceList[data.appearanceLeft] }}</label>
                 </div>
-                <p class='col-12 col-md-2 orContent'>或是</p>
-                <div class='col-12 col-md-5'>
-                    <input type="radio" id="appearance-right" name='option' class="col-6 radioOption"
+                <p class='w-full md:w-1/6 orContent'>或是</p>
+                <div class='w-full md:w-5/12'>
+                    <input type="radio" id="appearance-right" name='option' class="w-1/2 radioOption"
                         :value="data.appearanceList[data.appearanceRight]" v-on:click="clickAppearance">
                     <label for='appearance-right' id='appearance-right' class='radioLabel'>{{
                         data.appearanceList[data.appearanceRight] }}</label>
                 </div>
             </div>
-            <div class="col-12 my-2 mx-auto py-4 px-2 align-self-center d-md-flex justify-content-md-between"
+            <div class="w-full my-2 mx-auto py-6 px-2 self-center md:flex md:justify-between"
                 id="make-content" v-else-if="(data.clickTime >= 4 && data.clickTime <= 7)">
-                <div class='col-12 col-md-5'>
-                    <input type="radio" id="trait-left" name='option' class="col-6 radioOption"
+                <div class='w-full md:w-5/12'>
+                    <input type="radio" id="trait-left" name='option' class="w-1/2 radioOption"
                         :value="data.traitList[data.traitLeft]" v-on:click="clickAppearance">
                     <label for='trait-left' id='trait-left' class='radioLabel'>{{
                         data.traitList[data.traitLeft] }}</label>
                 </div>
-                <p class='col-12 col-md-2 orContent'>或是</p>
-                <div class='col-12 col-md-5'>
-                    <input type="radio" id="trait-right" name='option' class="col-6 radioOption"
+                <p class='w-full md:w-1/6 orContent'>或是</p>
+                <div class='w-full md:w-5/12'>
+                    <input type="radio" id="trait-right" name='option' class="w-1/2 radioOption"
                         :value="data.traitList[data.traitRight]" v-on:click="clickAppearance">
                     <label for='trait-right' id='trait-right' class='radioLabel'>{{
                         data.traitList[data.traitRight] }}</label>
                 </div>
             </div>
-            <div class="col-12 my-2 mx-auto py-4 px-2 align-self-center d-md-flex justify-content-md-between"
+            <div class="w-full my-2 mx-auto py-6 px-2 self-center md:flex md:justify-between"
                 id="make-content" v-else-if="data.clickTime == 8">
-                <div class="input-group my-3 mx-auto flex-nowrap ms-1">
-                    <span class="input-group-text inputGroup-sizing-lg">輸入名稱</span>
-                    <input type="text" class="form-control" id='name-text' required v-model="data.partnerName">
+                <div class="w-2/3 my-4 mx-auto">
+                    <div id="divInput" class="w-full flex flex-nowrap">
+                        <span class="ml-0 w-1/3 h-full">輸入名稱</span>
+                        <input type="text" class="h-full w-2/3 ml-0" id='name-text' required v-model="data.partnerName">
+                    </div>
                 </div>
-                <div class='col-10 col-md-3 my-3 mx-auto'>
-                    <button type="button" class="btn" id='make-done' v-on:click="makeDone">
-                        <a class='text-decoration-none'>製作完成</a>
+                <div class='w-1/3 md:w-1/4 my-4 mx-auto'>
+                    <button type="button" class="button" id='make-done' v-on:click="makeDone">
+                        <a class='no-underline'>製作完成</a>
                     </button>
                 </div>
             </div>
 
         </div>
-        <div class="col-12 my-3 my-md-5 mx-auto py-3 px-2 justify-content-center d-flex">
-            <div class="col-6 me-3">
+        <div class="w-full my-4 md:my-12 mx-auto py-6 px-2 justify-center flex">
+            <div class="w-1/2 mr-4">
                 <UserAppearance v-for="appearance in data.appearanceUser" :appearanceContent="appearance">
                 </UserAppearance>
             </div>
-            <div class="col-2 align-self-center" id="blindImg">
-                <img src="/nobackgroundIMG/0000.nobg.png" alt="" class="w-100">
+            <div class="w-1/6 self-center" id="blindImg">
+                <img src="/nobackgroundIMG/0000.nobg.png" alt="" class="w-full">
             </div>
-            <div class="col-6 me-3">
+            <div class="w-1/2 mr-4">
                 <UserTraits v-for="trait in data.traitUser" :traitContent='trait'></UserTraits>
             </div>
         </div>
-        <div class="position-absolute d-flex" id="footprintDiv">
+        <div class="absolute flex" id="footprintDiv">
             <div class="footprintItem" v-for="n in 8">
                 <FontAwesomeIcon :icon="faPaw" class="footDivI"></FontAwesomeIcon>
             </div>

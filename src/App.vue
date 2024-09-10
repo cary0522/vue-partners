@@ -53,15 +53,16 @@ function logOut(){
 .nav {
   width: 100%;
   min-width: 375px;
+  max-height: 50px;
   margin: 0 0 10px 0;
   background-image: linear-gradient(270deg,
       rgba(230, 217, 114, 0.6),
       rgba(136, 215, 255, 0.6));
   display: flex;
   justify-content: space-around;
+  align-items: center;
   position: relative;
   z-index: 1000;
-
   a {
     font-size: 2rem;
     text-decoration: none;

@@ -3,37 +3,37 @@ import PhoneTitle from '../PhoneTitle.vue'
 </script>
 
 <template>
-    <div id="phone" class="col-12 col-md-6">
-        <div class="container col-12 col-md-10 col-xl-8 d-flex justify-content-center mx-auto my-2 align-self-center">
-            <div class="iphone bg-white w-100 position-relative">
+    <div id="phone" class="w-full md:w-1/2">
+        <div class="container w-full md:w-5/6 xl:w-2/3 flex justify-center mx-auto my-2 self-center">
+            <div class="iphone bg-white w-full relative">
                 <PhoneTitle></PhoneTitle>
-                <div class="d-flex justify-content-between py-3 my-2">
-                    <div class="iphone-pic ms-2">
-                        <img src="/partners_photo/0011.jpg" alt="" class="rounded-circle flex-shrink-0" />
+                <div class="flex justify-between py-4 my-2">
+                    <div class="iphone-pic ml-2">
+                        <img src="/partners_photo/0011.jpg" alt="" class="rounded-full flex-shrink-0" />
                     </div>
-                    <div class="me-auto position-relative textContainer">
-                        <p class="partner-text textOne darkText">嗨！我是您的AI寵物！</p>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between py-3 my-2">
-                    <div class="iphone-pic my-auto ms-2">
-                        <img src="/partners_photo/0011.jpg" alt="" class="rounded-circle flex-shrink-0" />
-                    </div>
-                    <div class="text-start me-auto position-relative textContainer">
-                        <p class="partner-text textTwo darkText">請問您喜歡哪種寵物？</p>
+                    <div class="mr-auto relative textContainer">
+                        <p class="partner-text textOne">嗨！我是您的AI寵物！</p>
                     </div>
                 </div>
-                <div class="d-flex justify-content-between py-3 my-2">
-                    <div class="ms-auto iphone-text position-relative">
-                        <p class="user-text textThree darkText">我喜歡 ...</p>
+                <div class="flex justify-between py-4 my-2">
+                    <div class="iphone-pic my-auto ml-2">
+                        <img src="/partners_photo/0011.jpg" alt="" class="rounded-full flex-shrink-0" />
                     </div>
-                    <div class="iphone-pic me-2">
-                        <img src="https://picsum.photos/id/64/40/40" alt="" class="rounded-circle" />
+                    <div class="text-start mr-auto relative textContainer">
+                        <p class="partner-text textTwo">請問您喜歡哪種寵物？</p>
                     </div>
                 </div>
-                <div class="px-2 w-100 d-flex position-absolute enter-content">
-                    <div class="bg-secondary-subtle m-1 w-100 rounded text-start ps-2 py-1 text-secondary">Aa</div>
-                    <i class="fa-solid fa-paper-plane ms-auto my-auto"></i>
+                <div class="flex justify-between py-4 my-2">
+                    <div class="ml-auto iphone-text relative">
+                        <p class="user-text textThree">我喜歡 ...</p>
+                    </div>
+                    <div class="iphone-pic mr-2">
+                        <img src="https://picsum.photos/id/64/40/40" alt="" class="rounded-full" />
+                    </div>
+                </div>
+                <div class="px-2 w-full flex absolute enter-content">
+                    <div class="bg-secondary-subtle m-1 w-full rounded text-start pl-2 py-1 text-secondary">Aa</div>
+                    <i class="fa-solid fa-paper-plane ml-auto my-auto"></i>
                 </div>
             </div>
         </div>

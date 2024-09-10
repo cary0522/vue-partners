@@ -1,6 +1,9 @@
 @import "/src/assets/initSet.scss";
 
 #partnersPage {
+    h2{
+        font-size: 2.5rem;
+    }
     // 基本資料樣式
 	.grid-item1 {
         h2{
@@ -65,6 +68,7 @@
                 text-align: center;
                 background-color: $colorText;
                 border-radius: 30px;
+                padding: 20px;
                 &:hover {
                     transform: scale(1.1);
                     cursor: pointer;
@@ -90,18 +94,18 @@
 		z-index: -1;
 		.partnersFootprintItem {
 			svg {
-				font-size: 30px;
+				font-size: 40px;
 			}
 			&:nth-child(odd) {
 				width: 50%;
-				margin-right: auto;
+				margin-left: 0;
 				transform: rotate(-5deg);
 				color: rgb(190, 190, 190);
 				opacity: 0.4;
 			}
 			&:nth-child(even) {
 				width: 50%;
-				margin-left: auto;
+				margin-left: 20px;
 				transform: rotate(5deg);
 				color: rgb(190, 190, 190);
 				opacity: 0.4;

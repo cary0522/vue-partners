@@ -11,15 +11,15 @@ const partnerData = reactive({
 <template>
     <div class="grid-item grid-item1">
         <div>
-            <h2 class="p-3 highlight">夥伴基本資料</h2>
+            <h2 class="p-4 highlight">夥伴基本資料</h2>
         </div>
-        <div class="d-flex justify-content-center p-3 lightText">
-            <p class="fs-4">夥伴姓名：</p>
-            <p id="partner-name" class="fs-4">{{ partnerData.partnerName }}</p>
+        <div class="flex justify-center p-4">
+            <p class="text-base">夥伴姓名：</p>
+            <p id="partner-name" class="text-base">{{ partnerData.partnerName }}</p>
         </div>
         <div id="photo" class="my-2"></div>
-        <div class="col-lg-12 p-3 lh-lg lightText" id="info">
-            <p class='fs-5 m-0'>{{ partnerData.partnerName }}，是一位{{ partnerData.appearanceList['appearanceOne'] }}風格、
+        <div class="w-full p-12 md:p-8 lg:p-4" id="info">
+            <p class='text-xl m-0'>{{ partnerData.partnerName }}，是一位{{ partnerData.appearanceList['appearanceOne'] }}風格、
                 具有{{
                     partnerData.appearanceList['appearanceTwo'] }}、
                 {{ partnerData.appearanceList['appearanceThree'] }}的{{ partnerData.appearanceList['appearanceFour']
