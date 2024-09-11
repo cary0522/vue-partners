@@ -7,7 +7,6 @@ import Button from '../Button.vue';
 
 const { cookies } = useCookies()
 const token = cookies.get('token')
-const userData = defineModel()
 const passwordList = reactive({
     oldPassword: '',
     oldPasswordMessage: true,

@@ -29,7 +29,6 @@ const vueRecaptchaV2 = reactive({
 })
 
 const { cookies } = useCookies();
-const cookiesToken = cookies.get('token')
 
 const loginFunction = async (e) => {
     if (!user.googleToken) {
@@ -41,8 +40,12 @@ const loginFunction = async (e) => {
                 password: user.password.toString(),
                 'g-recaptcha-response': user.googleToken
             }).then((res) => {
-                alert(res.data.message)
-                cookies.set('token', res.data.token)
+                if (res.data.token) {
+                    alert(res.data.message)
+                    cookies.set('token', res.data.token)
+                } else {
+                    alert(res.data.message)
+                }
             }).then(() => {
                 window.location = '/Member'
             })

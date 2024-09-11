@@ -5,12 +5,14 @@ import { faBatteryFull, faSignal, faWifi } from '@fortawesome/free-solid-svg-ico
 </script>
 
 <template>
-        <div class="iphoneTitle">
+    <div class="flex justify-between mt-2">
+        <div class="iphoneTitle w-1/2 mx-1 my-2">
             <p>AI partners</p>
         </div>
-        <div class="phoneIcon">
-            <FontAwesomeIcon :icon="faWifi" class="icon" />
-            <FontAwesomeIcon :icon="faSignal" class="icon" />
-            <FontAwesomeIcon :icon="faBatteryFull" class="icon" />
+        <div class="phoneIcon w-1/2 mx-1 my-2 flex justify-end">
+            <FontAwesomeIcon :icon="faWifi" class="icon mx-2" />
+            <FontAwesomeIcon :icon="faSignal" class="icon mx-2" />
+            <FontAwesomeIcon :icon="faBatteryFull" class="icon mx-2" />
         </div>
+    </div>
 </template>

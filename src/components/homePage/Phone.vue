@@ -1,10 +1,12 @@
 <script setup>
 import PhoneTitle from '../PhoneTitle.vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 </script>
 
 <template>
     <div id="phone" class="w-full md:w-1/2">
-        <div class="container w-full md:w-5/6 xl:w-2/3 flex justify-center mx-auto my-2 self-center">
+        <div class="w-full md:w-5/6 xl:w-2/3 flex justify-center mx-auto my-2 self-center">
             <div class="iphone bg-white w-full relative">
                 <PhoneTitle></PhoneTitle>
                 <div class="flex justify-between py-4 my-2">
@@ -31,9 +33,9 @@ import PhoneTitle from '../PhoneTitle.vue'
                         <img src="https://picsum.photos/id/64/40/40" alt="" class="rounded-full" />
                     </div>
                 </div>
-                <div class="px-2 w-full flex absolute enter-content">
+                <div class="px-2 w-11/12 flex absolute mx-3 enter-content box-border">
                     <div class="bg-secondary-subtle m-1 w-full rounded text-start pl-2 py-1 text-secondary">Aa</div>
-                    <i class="fa-solid fa-paper-plane ml-auto my-auto"></i>
+                    <FontAwesomeIcon :icon="faPaperPlane" class="ml-auto mr-2 my-auto"></FontAwesomeIcon>
                 </div>
             </div>
         </div>

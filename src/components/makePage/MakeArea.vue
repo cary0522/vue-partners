@@ -18,7 +18,7 @@ const data = reactive({
     traitUser: ['', '', '', ''],
     appearanceUser: ['', '', '', ''],
     clickTime: 0,
-    partnerName:'小王'
+    partnerName: '小王'
 })
 
 const clickTimeCount = () => {
@@ -48,7 +48,7 @@ const makeDone = () => {
         window.open('/partners', '_self')
     }, 2800)
     axios.post('http://localhost:3000/data/userOptions', {
-        "partnerName":data.partnerName,
+        "partnerName": data.partnerName,
         "appearanceOne": data.appearanceUser[0],
         "appearanceTwo": data.appearanceUser[1],
         "appearanceThree": data.appearanceUser[2],
@@ -90,8 +90,8 @@ axios.get('http://localhost:3000/data/appearance').then((res) => {
             <h1 id="makePart" class="m-0 md:mx-auto" v-else-if="(data.clickTime >= 4 && data.clickTime <= 7)">選擇寵物特質
             </h1>
             <h1 id="makePart" class="m-0 md:mx-auto" v-else>請為寵物命名</h1>
-            <div class="w-full my-2 mx-auto py-6 px-2 self-center md:flex md:justify-between"
-                id="make-content" v-if="data.clickTime < 4">
+            <div class="w-full my-2 mx-auto py-6 px-2 self-center md:flex md:justify-between" id="make-content"
+                v-if="data.clickTime < 4">
                 <div class='w-full md:w-5/12'>
                     <input type="radio" id="appearance-left" name='option' class="w-1/2 radioOption"
                         :value="data.appearanceList[data.appearanceLeft]" v-on:click="clickAppearance">
@@ -106,8 +106,8 @@ axios.get('http://localhost:3000/data/appearance').then((res) => {
                         data.appearanceList[data.appearanceRight] }}</label>
                 </div>
             </div>
-            <div class="w-full my-2 mx-auto py-6 px-2 self-center md:flex md:justify-between"
-                id="make-content" v-else-if="(data.clickTime >= 4 && data.clickTime <= 7)">
+            <div class="w-full my-2 mx-auto py-6 px-2 self-center md:flex md:justify-between" id="make-content"
+                v-else-if="(data.clickTime >= 4 && data.clickTime <= 7)">
                 <div class='w-full md:w-5/12'>
                     <input type="radio" id="trait-left" name='option' class="w-1/2 radioOption"
                         :value="data.traitList[data.traitLeft]" v-on:click="clickAppearance">
@@ -122,37 +122,43 @@ axios.get('http://localhost:3000/data/appearance').then((res) => {
                         data.traitList[data.traitRight] }}</label>
                 </div>
             </div>
-            <div class="w-full my-2 mx-auto py-6 px-2 self-center md:flex md:justify-between"
-                id="make-content" v-else-if="data.clickTime == 8">
-                <div class="w-2/3 my-4 mx-auto">
+            <div class="w-full my-2 mx-auto py-6 px-2 self-center xl:flex xl:justify-between" id="make-content"
+                v-else-if="data.clickTime == 8">
+                <div class="w-full xl:w-2/3 my-4 mx-auto">
                     <div id="divInput" class="w-full flex flex-nowrap">
-                        <span class="ml-0 w-1/3 h-full">輸入名稱</span>
-                        <input type="text" class="h-full w-2/3 ml-0" id='name-text' required v-model="data.partnerName">
+                        <span class="ml-0 w-1/3 h-full text-base md:text-2xl">輸入名稱</span>
+                        <input type="text" class="h-full w-2/3 ml-0 text-base md:text-2xl" id='name-text' required v-model="data.partnerName">
                     </div>
                 </div>
-                <div class='w-1/3 md:w-1/4 my-4 mx-auto'>
+                <div class='w-full xl:w-1/3 my-4 mx-auto'>
                     <button type="button" class="button" id='make-done' v-on:click="makeDone">
-                        <a class='no-underline'>製作完成</a>
+                        <a class='no-underline text-base md:text-2xl'>製作完成</a>
                     </button>
                 </div>
             </div>
 
         </div>
         <div class="w-full my-4 md:my-12 mx-auto py-6 px-2 justify-center flex">
-            <div class="w-1/2 mr-4">
-                <UserAppearance v-for="appearance in data.appearanceUser" :appearanceContent="appearance">
-                </UserAppearance>
+            <div class="w-2/5 mr-4">
+                <div>
+                    <UserAppearance v-for="(appearance, n) in data.appearanceUser" :appearanceContent="appearance"
+                        :class="n <= data.clickTime - 1 ? 'checkedAppearance' : ''">
+                    </UserAppearance>
+                </div>
             </div>
-            <div class="w-1/6 self-center" id="blindImg">
+            <div class="w-1/5 self-center" id="blindImg">
                 <img src="/nobackgroundIMG/0000.nobg.png" alt="" class="w-full">
             </div>
-            <div class="w-1/2 mr-4">
-                <UserTraits v-for="trait in data.traitUser" :traitContent='trait'></UserTraits>
+            <div class="w-2/5 mr-4">
+                <UserTraits v-for="(trait, n) in data.traitUser" :traitContent='trait'
+                    :class="(n <= data.clickTime - 5) ? 'checkedTrait' : ''"></UserTraits>
             </div>
         </div>
         <div class="absolute flex" id="footprintDiv">
             <div class="footprintItem" v-for="n in 8">
-                <FontAwesomeIcon :icon="faPaw" class="footDivI"></FontAwesomeIcon>
+                <FontAwesomeIcon :icon="faPaw" class="footDivI"
+                    :style="(n <= data.clickTime) ? { 'color': '#ec7b7d' } : ''">
+                </FontAwesomeIcon>
             </div>
         </div>
     </div>

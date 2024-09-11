@@ -1,6 +1,4 @@
 <script setup>
-import Button from '../Button.vue';
-import Input from '../Input.vue';
 import MemberAccountData from './MemberAccountData.vue';
 import MemberPayment from './MemberPayment.vue';
 import MemberOrder from './MemberOrder.vue';
@@ -18,6 +16,6 @@ const userPhoto = defineModel('userPhoto')
         <MemberOrder v-else-if="options[1].turnOn"></MemberOrder>
         <MemberPayment v-else-if="options[2].turnOn"></MemberPayment>
         <MemberAccountData v-else-if="options[3].turnOn" v-model="userData"></MemberAccountData>
-        <MemberPassword v-else-if="options[4].turnOn" v-model="userData"></MemberPassword>
+        <MemberPassword v-else-if="options[4].turnOn"></MemberPassword>
     </div>
 </template>

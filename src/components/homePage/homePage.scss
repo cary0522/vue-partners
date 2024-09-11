@@ -13,17 +13,6 @@
 		margin: 20px auto;
 		#phone {
 			min-width: 375px;
-			.iphoneTitle {
-				margin: 5px 10px;
-			}
-			.phoneIcon {
-				width: 100%;
-				display: flex;
-				justify-content: flex-end;
-				.icon {
-					margin: 0 10px;
-				}
-			}
 			/* 設定對話框樣式、動畫效果 */
 			.textContainer {
 				overflow: hidden;
@@ -41,33 +30,32 @@
 			}
 			.partner-text {
 				margin-left: 20px;
+				&:before {
+					content: "";
+					border-top: 10px solid transparent;
+					border-bottom: 10px solid transparent;
+					border-left: 10px solid transparent;
+					border-right: 15px solid $colorMain;
+					position: absolute;
+					top: 10px;
+					left: 2px;
+				}
 			}
-			.user-text {
-				margin-right: 20px;
-			}
-			.partner-text::before {
-				content: "";
-				border-top: 10px solid transparent;
-				border-bottom: 10px solid transparent;
-				border-left: 10px solid transparent;
-				border-right: 15px solid $colorMain;
-				position: absolute;
-				top: 10px;
-				left: 2px;
-			}
-			.textOne::after {
-				content: "";
-				border-left: 1px solid rgba(128, 128, 128, 1);
-				border-top-right-radius: 25px;
-				border-bottom-right-radius: 25px;
-				background-color: $colorMain;
-				width: 95%;
-				height: 60%;
-				position: absolute;
-				top: 5px;
-				right: 0;
-				animation: typeWrite 3s steps(10) 1 forwards,
-					blank 0.5s steps(9) infinite forwards;
+			.textOne {
+				&:after {
+					content: "";
+					border-left: 1px solid rgba(128, 128, 128, 1);
+					border-top-right-radius: 25px;
+					border-bottom-right-radius: 25px;
+					background-color: $colorMain;
+					width: 95%;
+					height: 60%;
+					position: absolute;
+					top: 5px;
+					right: 0;
+					animation: typeWrite 3s steps(10) 1 forwards,
+						blank 0.5s steps(9) infinite forwards;
+				}
 			}
 			.textTwo {
 				&:after {
@@ -86,30 +74,35 @@
 						blank 0.5s 3s steps(9) infinite forwards;
 				}
 			}
-			.user-text::before {
-				content: "";
-				border-top: 10px solid transparent;
-				border-bottom: 10px solid transparent;
-				border-right: 10px solid transparent;
-				border-left: 15px solid $colorMain;
-				position: absolute;
-				right: 2px;
-				top: 10px;
+			.user-text {
+				margin-right: 20px;
+				&:before {
+					content: "";
+					border-top: 10px solid transparent;
+					border-bottom: 10px solid transparent;
+					border-right: 10px solid transparent;
+					border-left: 15px solid $colorMain;
+					position: absolute;
+					right: 2px;
+					top: 10px;
+				}
 			}
-			.textThree::after {
-				content: "";
-				border-left: 1px solid rgba(128, 128, 128, 0);
-				border-top-right-radius: 25px;
-				border-bottom-right-radius: 25px;
-				background-color: $colorMain;
-				width: 50%;
-				height: 60%;
-				position: absolute;
-				top: 5px;
-				left: 30px;
-				right: 0;
-				animation: typeWriteRight 2s 6s steps(4) 1 forwards,
-					blank 0.5s 6s steps(3) infinite forwards;
+			.textThree {
+				&:after {
+					content: "";
+					border-left: 1px solid rgba(128, 128, 128, 0);
+					border-top-right-radius: 25px;
+					border-bottom-right-radius: 25px;
+					background-color: $colorMain;
+					width: 50%;
+					height: 60%;
+					position: absolute;
+					top: 5px;
+					left: 20px;
+					right: 0;
+					animation: typeWriteRight 2s 6s steps(4) 1 forwards,
+						blank 0.5s 6s steps(3) infinite forwards;
+				}
 			}
 			@keyframes typeWrite {
 				0% {
@@ -148,6 +141,9 @@
 			}
 			.enter-content {
 				bottom: 8px;
+				color: $colorMain;
+				border: 1px solid $colorMain;
+				border-radius: 20px;
 			}
 			.iphone {
 				height: 500px;
@@ -273,6 +269,11 @@
 							text-align: center;
 						}
 					}
+				}
+			}
+			&:nth-of-type(3) {
+				.option {
+					flex-direction: row-reverse;
 				}
 			}
 		}

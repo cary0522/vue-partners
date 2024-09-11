@@ -133,13 +133,13 @@
 		#make-container {
 			margin-top: 3%;
 			h1 {
-				font-size: 2rem;
+				font-size: 3rem;
 				width: 100%;
 				text-align: center;
 				color: $colorMain;
 				background-image: linear-gradient(
 					transparent 50%,
-					rgba(194, 187, 187, 0.6) 50%
+					rgba(255, 220, 177, 0.6) 50%
 				);
 			}
 			#make-content {
@@ -149,10 +149,12 @@
 					align-items: center;
 					margin: 20px;
 					padding: 20px 50px;
-					font-size: 25px;
 					color: $colorMain;
 					input {
 						background-color: transparent;
+					}
+					@media screen and (max-width:400px) {
+						padding-left: 10px;
 					}
 				}
 			}
@@ -188,22 +190,22 @@
 		.divTrait {
 			&:nth-of-type(1) {
 				.relateLineTrait {
-					transform: rotate(-15deg);
+					transform: rotate(-15deg) translate(-15px, 80%);
 				}
 			}
 			&:nth-of-type(2) {
 				.relateLineTrait {
-					transform: rotate(-5deg);
+					transform: rotate(-5deg) translateY(30%);
 				}
 			}
 			&:nth-of-type(3) {
 				.relateLineTrait {
-					transform: rotate(5deg);
+					transform: rotate(5deg) translateY(-20%);
 				}
 			}
 			&:nth-of-type(4) {
 				.relateLineTrait {
-					transform: rotate(15deg);
+					transform: rotate(15deg) translateY(-60%);
 				}
 			}
 			.relateLineTrait {
@@ -219,22 +221,22 @@
 		.divAppearance {
 			&:nth-of-type(1) {
 				.relateLine {
-					transform: rotate(15deg);
+					transform: rotate(15deg) translate(10px, 80%);
 				}
 			}
 			&:nth-of-type(2) {
 				.relateLine {
-					transform: rotate(5deg);
+					transform: rotate(5deg) translateY(30%);
 				}
 			}
 			&:nth-of-type(3) {
 				.relateLine {
-					transform: rotate(-5deg);
+					transform: rotate(-5deg) translateY(-20%);
 				}
 			}
 			&:nth-of-type(4) {
 				.relateLine {
-					transform: rotate(-15deg);
+					transform: rotate(-15deg) translateY(-60%);
 				}
 			}
 			.relateLine {
@@ -261,22 +263,18 @@
 			font-size: 1.2rem;
 		}
 	}
-	// .checkedOption {
-	// 	font-size: 16px;
-	// 	color: $colorMain;
-	// 	border-radius: 25%;
-	// 	line-height: 25px;
-	// 	height: fit-content;
-	// 	&:hover {
-	// 		transform: scale(1.1);
-	// 	}
-	// }
-	// .checkedTrait {
-	// 	animation: checkedTrait 0.5s ease-in;
-	// }
-	// .checkedAppearance {
-	// 	animation: checkedAppearance 0.5s ease-in;
-	// }
+	.checkedTrait {
+		animation: checkedTrait 0.5s ease-in;
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+	.checkedAppearance {
+		animation: checkedAppearance 0.5s ease-in;
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
 
 	.blindImgAnimation {
 		animation: blindAnimation 0.3s linear;
