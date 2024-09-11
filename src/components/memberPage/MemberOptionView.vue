@@ -13,7 +13,7 @@ const userPhoto = defineModel('userPhoto')
 </script>
 
 <template>
-    <div class="mx-auto w-5/6 h-full">
+    <div class="mx-auto 2xl:ml-0 w-5/6 h-full divOptionViews">
         <MemberPhoto v-if="options[0].turnOn" v-model="userPhoto"></MemberPhoto>
         <MemberOrder v-else-if="options[1].turnOn"></MemberOrder>
         <MemberPayment v-else-if="options[2].turnOn"></MemberPayment>

@@ -1,11 +1,16 @@
 <script setup>
 import { reactive, watch } from 'vue';
+import { useCookies } from 'vue3-cookies';
+import axios from 'axios';
 import Input from '../Input.vue';
-import { faL } from '@fortawesome/free-solid-svg-icons';
+import Button from '../Button.vue';
+
+const { cookies } = useCookies()
+const token = cookies.get('token')
 const userData = defineModel()
 const passwordList = reactive({
     oldPassword: '',
-    oldPasswordMessage: false,
+    oldPasswordMessage: true,
     newPassword: '',
     newPasswordMessage: false,
     newPasswordVerify: '',
@@ -14,11 +19,7 @@ const passwordList = reactive({
 
 watch(() => passwordList.oldPassword, (oldPassword) => {
     if (oldPassword) {
-        if (userData.password == oldPassword) {
-            passwordList.oldPasswordMessage = false
-        } else {
-            passwordList.oldPasswordMessage = true
-        }
+        passwordList.oldPasswordMessage = false
     }
 })
 watch(() => passwordList.newPassword, (newPassword) => {
@@ -39,19 +40,43 @@ watch(() => passwordList.newPasswordVerify, (newPasswordVerify) => {
         }
     }
 })
+
+const modifyPassword = () => {
+    if (passwordList.oldPasswordMessage) {
+        alert('請輸入舊密碼')
+    } else if (!passwordList.newPassword || !passwordList.newPasswordVerify) {
+        alert('請輸入新密碼')
+    } else if (passwordList.newPasswordMessage) {
+        alert('新密碼不得與舊密碼相同')
+    } else if (passwordList.newPasswordVerifyMessage) {
+        alert('請輸入正確的新密碼')
+    } else if (!passwordList.oldPasswordMessage && !passwordList.newPasswordMessage && !passwordList.newPasswordVerifyMessage) {
+        axios.post('http://localhost:3000/member/modifyPassword', {
+            'token': token,
+            'oldPassword': passwordList.oldPassword,
+            'newPassword': passwordList.newPassword
+        }).then((res) => {
+            alert(res.data.message)
+            if (res.data.message == '密碼正確') {
+                window.location = '/Member'
+            }
+        })
+    }
+
+}
+
 </script>
 <template>
     <div id="divMemberPassword">
-        <h4>password</h4>
-
-        <Input :input-type="'password'" :inputId="'oldPassword'" :label-content="'舊密碼：'" :placeHolder="'請輸入舊密碼'"
+        <Input :input-type="'password'" :inputId="'oldPassword'" :label-content="'舊密碼：'" :placeHolder="'請輸入目前的密碼'"
             v-model="passwordList.oldPassword"></Input>
-        <p v-if="passwordList.oldPasswordMessage">請輸入正確的密碼</p>
+        <p v-if="passwordList.oldPasswordMessage">請輸入舊密碼</p>
         <Input :input-type="'password'" :inputId="'newPassword'" :label-content="'新密碼：'" :placeHolder="'請輸入新密碼'"
             v-model="passwordList.newPassword"></Input>
         <p v-if="passwordList.newPasswordMessage">新密碼不得與舊密碼相同</p>
         <Input :input-type="'password'" :inputId="'newPasswordVerify'" :label-content="'新密碼：'" :placeHolder="'請再次輸入新密碼'"
             v-model="passwordList.newPasswordVerify"></Input>
         <p v-if="passwordList.newPasswordVerifyMessage">請輸入正確的新密碼</p>
+        <Button :btn-content="'確認更改密碼'" :onClickFunction="modifyPassword"></Button>
     </div>
 </template>

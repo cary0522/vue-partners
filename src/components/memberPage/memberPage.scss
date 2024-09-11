@@ -1,6 +1,6 @@
 @import "/src/assets/initSet.scss";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Baloo+Bhaijaan+2:wght@400..800&family=Bungee+Shade&family=Caveat+Brush&family=Comic+Neue:wght@300&family=Concert+One&family=Darumadrop+One&family=Dela+Gothic+One&family=Fugaz+One&family=Itim&family=Klee+One&family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nanum+Pen+Script&family=Noto+Sans+TC:wght@100..900&family=Protest+Riot&family=Rubik+Doodle+Shadow&family=Share+Tech+Mono&family=Yusei+Magic&family=Zen+Maru+Gothic&family=Zen+Old+Mincho&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Baloo+Bhaijaan+2:wght@400..800&family=Bungee+Shade&family=Caveat+Brush&family=Comic+Neue:wght@300&family=Concert+One&family=Darumadrop+One&family=Dela+Gothic+One&family=Fugaz+One&family=Itim&family=Klee+One&family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nanum+Pen+Script&family=Noto+Sans+TC:wght@100..900&family=Protest+Riot&family=Rubik+Doodle+Shadow&family=Share+Tech+Mono&family=Yusei+Magic&family=Zen+Maru+Gothic&family=Zen+Old+Mincho&display=swap");
 .memberPage {
 	// font-family: "Baloo Bhaijaan 2","Noto Sans TC", "Arial", sans-serif;
 	position: relative;
@@ -110,60 +110,63 @@
 				justify-content: center;
 			}
 		}
-		#divMemberPhoto {
-			text-align: center;
-			padding: 20px;
-			form {
-				width: 100%;
-				input{
-					width: auto;
-					margin: 10px;
-					text-align: start;
+		.divOptionViews {
+			max-width: 1015px;
+			#divMemberPhoto {
+				text-align: center;
+				padding: 20px;
+				form {
+					width: 100%;
+					input {
+						width: auto;
+						margin: 10px;
+						text-align: start;
+					}
 				}
-			}
-			img{
-				width: 50%;
-				margin: 10px auto;
-				background-color: transparent;
-				border: 1px dashed rgb(203, 203, 203);
-			}
-		}
-		#divMemberAccount {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-around;
-			padding: 20px;
-			input {
-				width: 100%;
-				display: flex;
-				flex-wrap: wrap;
-				margin: 10px 0;
-				line-height: 100%;
-			}
-			.divBtn {
-				width: 100%;
-				display: flex;
-				justify-content: end;
-				margin: 5px 25px 0 auto ;
-			}
-		}
-		#divMemberPassword {
-			padding: 20px;
-			p{
-				color: $colorText;
-			}
-			.divInput {
-				width: 100%;
-				display: flex;
-				flex-wrap: wrap;
-				margin: 10px auto;
-				label {
+				img {
 					width: 50%;
 					margin: 10px auto;
+					background-color: transparent;
+					border: 1px dashed rgb(203, 203, 203);
 				}
+			}
+			#divMemberAccount {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				padding: 20px;
 				input {
-					width: 50%;
+					width: 100%;
+					display: flex;
+					flex-wrap: wrap;
+					margin: 10px 0;
+					line-height: 100%;
+				}
+				.divBtn {
+					width: 100%;
+					display: flex;
+					justify-content: end;
+					margin: 5px 25px 0 auto;
+				}
+			}
+			#divMemberPassword {
+				padding: 20px;
+				p {
+					color: $colorText;
+				}
+				.divInput {
+					width: 100%;
+					display: flex;
+					flex-wrap: wrap;
 					margin: 10px auto;
+					label {
+						width: 50%;
+						margin: 10px auto;
+					}
+					input {
+						width: 50%;
+						margin: 10px auto;
+					}
 				}
 			}
 		}
