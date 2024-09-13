@@ -7,6 +7,9 @@ import '../components/homePage/homePage.scss'
 let btnStart = ()=>{
   window.open('/make','_self')
 }
+
+import { useMemberStore } from '@/store/useMemberStore';
+const memberStore = useMemberStore()
 </script>
 
 <template>

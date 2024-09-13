@@ -5,6 +5,11 @@ import Button from '../Button.vue';
 import VueRecaptcha from 'vue3-recaptcha2';
 import axios from 'axios';
 import { useCookies } from 'vue3-cookies';
+import { useMemberStore } from '@/store/useMemberStore';
+import { useRouter } from 'vue-router';
+const memberStore = useMemberStore();
+
+const router = useRouter();
 
 const user = reactive({
     account: null,
@@ -42,12 +47,13 @@ const loginFunction = async (e) => {
             }).then((res) => {
                 if (res.data.token) {
                     alert(res.data.message)
-                    cookies.set('token', res.data.token)
+                    memberStore.setToken(res.data.token)
+                    // cookies.set('token', res.data.token)
                 } else {
                     alert(res.data.message)
                 }
             }).then(() => {
-                window.location = '/Member'
+                router.push({ path: '/Member' })
             })
         } catch (err) {
             console.log(err)

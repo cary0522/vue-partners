@@ -1,42 +1,29 @@
 <script setup>
 import { reactive } from 'vue';
 import axios from 'axios';
-import { useCookies } from 'vue3-cookies';
+// import { useCookies } from 'vue3-cookies';
 import MemberOption from './MemberOption.vue';
 import MemberOptionView from './MemberOptionView.vue';
+import { useMemberStore } from '@/store/useMemberStore';
+const memberStore = useMemberStore();
 
-const { cookies } = useCookies();
-const token = cookies.get('token')
-
-const userData = reactive({
-    account:{'title':'帳號',value:'',disable:true},
-    userName:{'title':'會員名稱',value:'',disable:false},
-    birth:{'title':'生日',value:'',disable:false},
-    location:{'title':'聯絡地址',value:'',disable:false},
-    phone:{'title':'聯絡電話',value:'',disable:false},
-    createAt:{'title':'創建日期',value:'',disable:true},
-})
-const userPhoto = reactive({
-    account:'',
-    photo:'',
-    photoType:''
-})
+// const { cookies } = useCookies();
+// const token = cookies.get('token')
 
 // 取得會員資料
 axios.post('http://localhost:3000/member/userData', {
-    'token': token
+    'token': memberStore.token
 }).then(res => {
-    userData.account.value = res.data.account
-    userData.birth.value = res.data.birth?res.data.birth:''
-    userData.createAt.value = res.data.createAt.substring(0,10)
-    userData.location.value = res.data.location?res.data.location:''
-    userData.phone.value = res.data.phone?res.data.phone:''
-    userData.userName.value = res.data.userName?res.data.userName:''
-    userPhoto.account = res.data.account
+    memberStore.userData.account.value = res.data.account
+    memberStore.userData.birth.value = res.data.birth ? res.data.birth : ''
+    memberStore.userData.createAt.value = res.data.createAt.substring(0, 10)
+    memberStore.userData.location.value = res.data.location ? res.data.location : ''
+    memberStore.userData.phone.value = res.data.phone ? res.data.phone : ''
+    memberStore.userData.userName.value = res.data.userName ? res.data.userName : ''
     // 取得圖片格式
     const photoType = res.data.photoType
-    userPhoto.photo = res.data.photo?`data:image/${photoType};base64,`+res.data.photo:''
-    userPhoto.photoType = res.data.photoType?res.data.photoType:''
+    memberStore.photoData.photo = res.data.photo ? `data:image/${photoType};base64,` + res.data.photo : ''
+    memberStore.photoData.photoType = res.data.photoType ? res.data.photoType : ''
 })
 
 // 左邊按鈕控制右邊顯示內容
@@ -100,6 +87,6 @@ const options = reactive([
     </h4>
     <div id="divMember" class="h-full">
         <MemberOption v-model="options" class="w-1/6"></MemberOption>
-        <MemberOptionView v-model:options="options" v-model:userData="userData" v-model:userPhoto="userPhoto" class="w-2/3"></MemberOptionView>
+        <MemberOptionView v-model:options="options" class="w-2/3"></MemberOptionView>
     </div>
 </template>

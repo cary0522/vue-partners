@@ -1,12 +1,18 @@
 <script setup>
 import { reactive, watch } from 'vue';
-import { useCookies } from 'vue3-cookies';
+// import { useCookies } from 'vue3-cookies';
 import axios from 'axios';
 import Input from '../Input.vue';
 import Button from '../Button.vue';
+import { useRouter } from 'vue-router';
 
-const { cookies } = useCookies()
-const token = cookies.get('token')
+
+const router = useRouter();
+// const { cookies } = useCookies()
+// const token = cookies.get('token')
+
+import { useMemberStore } from '@/store/useMemberStore';
+const memberStore = useMemberStore();
 const passwordList = reactive({
     oldPassword: '',
     oldPasswordMessage: true,
@@ -51,13 +57,13 @@ const modifyPassword = () => {
         alert('請輸入正確的新密碼')
     } else if (!passwordList.oldPasswordMessage && !passwordList.newPasswordMessage && !passwordList.newPasswordVerifyMessage) {
         axios.post('http://localhost:3000/member/modifyPassword', {
-            'token': token,
+            'token': memberStore.token,
             'oldPassword': passwordList.oldPassword,
             'newPassword': passwordList.newPassword
         }).then((res) => {
             alert(res.data.message)
             if (res.data.message == '密碼正確') {
-                window.location = '/Member'
+                router.push('/Member')
             }
         })
     }

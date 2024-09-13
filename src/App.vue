@@ -1,10 +1,14 @@
 <script setup>
 import { reactive } from 'vue';
-import { RouterLink, RouterView } from 'vue-router'
-import { useCookies } from 'vue3-cookies';
+import { RouterLink, RouterView, useRouter } from 'vue-router'
+// import { useCookies } from 'vue3-cookies';
 import axios from 'axios';
-const { cookies } = useCookies()
-const cookieToken = cookies.get('token')
+// const { cookies } = useCookies()
+// const cookieToken = cookies.get('token')
+import { useMemberStore } from '@/store/useMemberStore';
+const memberStore = useMemberStore();
+
+const router = useRouter()
 
 const photoData = reactive({
   photo: '',
@@ -12,7 +16,7 @@ const photoData = reactive({
 })
 
 axios.post('http://localhost:3000/member/userData', {
-  'token': cookieToken
+  'token': memberStore.token
 }).then((res) => {
   const photoType = res.data.photoType
   photoData.photo=res.data.photo?`data:image/${photoType};base64,`+res.data.photo:''
@@ -20,8 +24,8 @@ axios.post('http://localhost:3000/member/userData', {
 })
 
 function logOut(){
-  cookies.set('token','')
-  window.location='/Member'
+  memberStore.token = ''
+  router.push('/Member')
 }
 </script>
 
@@ -34,9 +38,9 @@ function logOut(){
       <RouterLink to="/Premium">Premium</RouterLink>
       <RouterLink to="/Cart">Cart</RouterLink>
       <RouterLink to="/Member">
-        <div v-if="cookieToken" id="userName">
-          <img :src="photoData.photo" alt="">
-          <p>Hi {{ photoData.userName }}</p>
+        <div v-if="memberStore.token" id="userName">
+          <img :src="memberStore.photoData.photo" alt="">
+          <p>Hi {{ memberStore.userData.userName.value }}</p>
           <button @click="logOut">登出</button>
         </div>
         <div v-else>

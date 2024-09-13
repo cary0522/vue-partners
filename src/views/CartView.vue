@@ -1,4 +1,7 @@
 <script setup>
+import { useMemberStore } from '@/store/useMemberStore';
+const memberStore = useMemberStore();
+
 </script>
 
 <template>

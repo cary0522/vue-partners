@@ -4,7 +4,6 @@ import { reactive } from 'vue';
 import PassView from '@/components/makePage/PassView.vue';
 import MakeArea from '@/components/makePage/MakeArea.vue';
 
-
 const loading = reactive({
   show: false
 })
