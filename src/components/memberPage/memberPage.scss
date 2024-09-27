@@ -151,8 +151,11 @@
 			}
 			#divMemberPassword {
 				padding: 20px;
+				div{
+					width: 100%;
+				}
 				p {
-					color: $colorText;
+					color: $colorRed;
 				}
 				.divInput {
 					width: 100%;

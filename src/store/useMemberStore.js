@@ -25,4 +25,5 @@ export const useMemberStore = defineStore("member", {
 			this.token = newToken;
 		},
 	},
+	persist: true,
 });

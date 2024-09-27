@@ -5,7 +5,7 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 </script>
 
 <template>
-    <div id="phone" class="w-full md:w-1/2">
+    <div id="phone" class="w-5/6 md:w-1/2">
         <div class="w-full md:w-5/6 xl:w-2/3 flex justify-center mx-auto my-2 self-center">
             <div class="iphone bg-white w-full relative">
                 <PhoneTitle></PhoneTitle>

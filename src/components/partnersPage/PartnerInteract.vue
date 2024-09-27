@@ -1,5 +1,4 @@
 <script setup>
-const props = defineProps(['userOptions']);
 import PhoneTitle from '../PhoneTitle.vue'
 import OptionBehaviors from '../OptionBehaviors.vue';
 import { reactive } from 'vue';
@@ -51,6 +50,11 @@ const optionList = reactive([
         id: 'toilet-card'
     },
 ])
+
+import { usePartnersStore } from '@/store/usePartnersStore';
+import axios from 'axios';
+const partnerStore = usePartnersStore();
+
 </script>
 
 <template>

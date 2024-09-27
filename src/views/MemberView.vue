@@ -1,10 +1,7 @@
 <script setup>
-import Button from '@/components/Button.vue';
 import UnLogin from '@/components/memberPage/UnLogin.vue';
 import MemberLogin from '@/components/memberPage/MemberLogin.vue';
-// import { useCookies } from 'vue3-cookies';
-// const { cookies } = useCookies();
-// const cookiesToken = cookies.get('token')
+
 import { useMemberStore } from '@/store/useMemberStore';
 const memberStore = useMemberStore();
 import '../components/memberPage/memberPage.scss'

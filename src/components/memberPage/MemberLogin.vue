@@ -1,14 +1,11 @@
 <script setup>
 import { reactive } from 'vue';
 import axios from 'axios';
-// import { useCookies } from 'vue3-cookies';
 import MemberOption from './MemberOption.vue';
 import MemberOptionView from './MemberOptionView.vue';
 import { useMemberStore } from '@/store/useMemberStore';
 const memberStore = useMemberStore();
 
-// const { cookies } = useCookies();
-// const token = cookies.get('token')
 
 // 取得會員資料
 axios.post('http://localhost:3000/member/userData', {

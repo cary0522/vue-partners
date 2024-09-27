@@ -7,6 +7,10 @@ import UserAppearance from './UserAppearance.vue';
 import UserTraits from './UserTraits.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
+import { usePartnersStore } from '@/store/usePartnersStore';
+import router from '@/router';
+const partnersStore = usePartnersStore()
+console.log('partnersStore:', partnersStore.$state)
 
 const data = reactive({
     traitList: [],
@@ -15,65 +19,51 @@ const data = reactive({
     appearanceList: [],
     appearanceLeft: 0,
     appearanceRight: 1,
-    traitUser: ['', '', '', ''],
-    appearanceUser: ['', '', '', ''],
     clickTime: 0,
     partnerName: '小王'
 })
 
+// 計算點擊次數，影響腳印特效
 const clickTimeCount = () => {
     data.clickTime++
 }
 
-function clickAppearance(e) {
+function clickOptions(e) {
     if (data.clickTime < 4) {
-        data.appearanceUser[data.clickTime] = e.target.value
+        partnersStore.$state.userPartner.userAppearance[data.clickTime] = e.target.value
         clickTimeCount()
         data.appearanceLeft += 2
         data.appearanceRight += 2
-        footStyle()
     } else if (data.clickTime >= 4 && data.clickTime <= 7) {
-        data.traitUser[data.clickTime - 4] = e.target.value
+        partnersStore.$state.userPartner.userTraits[data.clickTime - 4] = e.target.value
         clickTimeCount()
         data.traitLeft += 2
         data.traitRight += 2
-        footStyle()
     }
-    console.log('appearance:', data.appearanceUser, 'trait:', data.traitUser)
 }
 
+// 製作完成，將寵物名稱、選取特質及外表存入狀態管理
 const makeDone = () => {
     props.loadingShowFunction()
+    partnersStore.$state.userPartner.partnerName = data.partnerName
     setTimeout(() => {
-        window.open('/partners', '_self')
+        router.push('/partners')
     }, 2800)
     axios.post('http://localhost:3000/data/userOptions', {
         "partnerName": data.partnerName,
-        "appearanceOne": data.appearanceUser[0],
-        "appearanceTwo": data.appearanceUser[1],
-        "appearanceThree": data.appearanceUser[2],
-        "appearanceFour": data.appearanceUser[3],
-        "traitOne": data.traitUser[0],
-        "traitTwo": data.traitUser[1],
-        "traitThree": data.traitUser[2],
-        "traitFour": data.traitUser[3]
-    }).then(response => {
-        console.log(response)
+        "appearanceList": partnersStore.$state.userPartner.userAppearance,
+        "traitsList": partnersStore.$state.userPartner.userTraits
     })
-
 }
 
-
-const footStyle = () => {
-    console.log(data.clickTime)
-}
-
+// 取得特質資料，放入特質陣列中
 axios.get('http://localhost:3000/data/trait').then((res) => {
     res.data.forEach(element => {
         data.traitList.push(element.trait)
     });
     return (data.traitList)
 })
+// 取得外表資料，放入外表陣列中
 axios.get('http://localhost:3000/data/appearance').then((res) => {
     res.data.forEach(element => {
         data.appearanceList.push(element.appearance)
@@ -84,7 +74,7 @@ axios.get('http://localhost:3000/data/appearance').then((res) => {
 </script>
 
 <template>
-    <div class="option-content w-4/4 md:w-full lg:w-2/3 p-6">
+    <div class="option-content w-4/4 md:w-full xl:w-2/3 p-6">
         <div class="w-full" id="make-container">
             <h1 id="makePart" class="m-0 md:mx-auto" v-if="(data.clickTime < 4)">選擇寵物外表</h1>
             <h1 id="makePart" class="m-0 md:mx-auto" v-else-if="(data.clickTime >= 4 && data.clickTime <= 7)">選擇寵物特質
@@ -94,14 +84,14 @@ axios.get('http://localhost:3000/data/appearance').then((res) => {
                 v-if="data.clickTime < 4">
                 <div class='w-full md:w-5/12'>
                     <input type="radio" id="appearance-left" name='option' class="w-1/2 radioOption"
-                        :value="data.appearanceList[data.appearanceLeft]" v-on:click="clickAppearance">
+                        :value="data.appearanceList[data.appearanceLeft]" v-on:click="clickOptions">
                     <label for='appearance-left' id='appearance-left' class='radioLabel'>{{
                         data.appearanceList[data.appearanceLeft] }}</label>
                 </div>
-                <p class='w-full md:w-1/6 orContent'>或是</p>
+                <p class='w-full md:w-1/6 orContent my-8 md:my-0'>或是</p>
                 <div class='w-full md:w-5/12'>
                     <input type="radio" id="appearance-right" name='option' class="w-1/2 radioOption"
-                        :value="data.appearanceList[data.appearanceRight]" v-on:click="clickAppearance">
+                        :value="data.appearanceList[data.appearanceRight]" v-on:click="clickOptions">
                     <label for='appearance-right' id='appearance-right' class='radioLabel'>{{
                         data.appearanceList[data.appearanceRight] }}</label>
                 </div>
@@ -110,24 +100,25 @@ axios.get('http://localhost:3000/data/appearance').then((res) => {
                 v-else-if="(data.clickTime >= 4 && data.clickTime <= 7)">
                 <div class='w-full md:w-5/12'>
                     <input type="radio" id="trait-left" name='option' class="w-1/2 radioOption"
-                        :value="data.traitList[data.traitLeft]" v-on:click="clickAppearance">
+                        :value="data.traitList[data.traitLeft]" v-on:click="clickOptions">
                     <label for='trait-left' id='trait-left' class='radioLabel'>{{
                         data.traitList[data.traitLeft] }}</label>
                 </div>
                 <p class='w-full md:w-1/6 orContent'>或是</p>
                 <div class='w-full md:w-5/12'>
                     <input type="radio" id="trait-right" name='option' class="w-1/2 radioOption"
-                        :value="data.traitList[data.traitRight]" v-on:click="clickAppearance">
+                        :value="data.traitList[data.traitRight]" v-on:click="clickOptions">
                     <label for='trait-right' id='trait-right' class='radioLabel'>{{
                         data.traitList[data.traitRight] }}</label>
                 </div>
             </div>
-            <div class="w-full my-2 mx-auto py-6 px-2 self-center xl:flex xl:justify-between" id="make-content"
+            <div class="w-full my-2 mx-auto py-6 px-2 self-center md:flex md:justify-between" id="make-content"
                 v-else-if="data.clickTime == 8">
                 <div class="w-full xl:w-2/3 my-4 mx-auto">
                     <div id="divInput" class="w-full flex flex-nowrap">
-                        <span class="ml-0 w-1/3 h-full text-base md:text-2xl">輸入名稱</span>
-                        <input type="text" class="h-full w-2/3 ml-0 text-base md:text-2xl" id='name-text' required v-model="data.partnerName">
+                        <span class="ml-0 w-1/3 h-full text-base md:text-lg lg:text-xl xl:text-2xl">輸入名稱</span>
+                        <input type="text" class="h-full w-2/3 ml-2 text-base md:text-xl xl:text-2xl" id='name-text'
+                            required v-model="data.partnerName">
                     </div>
                 </div>
                 <div class='w-full xl:w-1/3 my-4 mx-auto'>
@@ -138,11 +129,11 @@ axios.get('http://localhost:3000/data/appearance').then((res) => {
             </div>
 
         </div>
-        <div class="w-full my-4 md:my-12 mx-auto py-6 px-2 justify-center flex">
+        <div class="w-full my-4 md:my-8 mx-auto py-6 px-2 justify-center flex">
             <div class="w-2/5 mr-4">
                 <div>
-                    <UserAppearance v-for="(appearance, n) in data.appearanceUser" :appearanceContent="appearance"
-                        :class="n <= data.clickTime - 1 ? 'checkedAppearance' : ''">
+                    <UserAppearance v-for="(appearance, n) in partnersStore.$state.userPartner.userAppearance"
+                        :appearanceContent="appearance" :class="n <= data.clickTime - 1 ? 'checkedAppearance' : ''">
                     </UserAppearance>
                 </div>
             </div>
@@ -150,7 +141,7 @@ axios.get('http://localhost:3000/data/appearance').then((res) => {
                 <img src="/nobackgroundIMG/0000.nobg.png" alt="" class="w-full">
             </div>
             <div class="w-2/5 mr-4">
-                <UserTraits v-for="(trait, n) in data.traitUser" :traitContent='trait'
+                <UserTraits v-for="(trait, n) in partnersStore.$state.userPartner.userTraits" :traitContent='trait'
                     :class="(n <= data.clickTime - 5) ? 'checkedTrait' : ''"></UserTraits>
             </div>
         </div>

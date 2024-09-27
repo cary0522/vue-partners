@@ -17,6 +17,7 @@
     "axios": "^1.7.5",
     "bootstrap-vue": "^2.23.1",
     "pinia": "^2.2.2",
+    "pinia-plugin-persistedstate": "^4.0.1",
     "sass": "^1.77.8",
     "vue": "^3.4.38",
     "vue-cookies": "^1.8.4",

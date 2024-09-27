@@ -1,10 +1,11 @@
 <script setup>
-import { reactive } from 'vue';
-const props = defineProps(['userOptions']);
-const partnerData = reactive({
-    partnerName: props.userOptions.partnerName,
-    appearanceList: props.userOptions.appearanceList,
-    traitList: props.userOptions.traitList
+import { usePartnersStore } from '@/store/usePartnersStore';
+import axios from 'axios';
+const partnerStore = usePartnersStore();
+axios.post('http://localhost:3000/partners/photo', {
+    "appearanceList": partnerStore.$state.userPartner.userAppearance
+}).then((res) => {
+    partnerStore.$state.photoUrl = res.data
 })
 </script>
 
@@ -14,19 +15,24 @@ const partnerData = reactive({
             <h2 class="p-4 highlight">夥伴基本資料</h2>
         </div>
         <div class="flex justify-center p-4">
-            <p class="text-base">夥伴姓名：</p>
-            <p id="partner-name" class="text-base">{{ partnerData.partnerName }}</p>
+            <p class="text-xl">夥伴姓名：</p>
+            <p id="partner-name" class="text-xl">{{ partnerStore.$state.userPartner.partnerName }}</p>
         </div>
-        <div id="photo" class="my-2"></div>
+        <div id="photo" class="my-2">
+            <img :src=partnerStore.$state.photoUrl alt="" class="rounded-2xl">
+        </div>
         <div class="w-full p-12 md:p-8 lg:p-4" id="info">
-            <p class='text-xl m-0'>{{ partnerData.partnerName }}，是一位{{ partnerData.appearanceList['appearanceOne'] }}風格、
+            <p class='text-xl m-0 tracking-widest'>{{ partnerStore.$state.userPartner.partnerName }}，是一位{{
+                partnerStore.$state.userPartner.userAppearance[0] }}風格、
                 具有{{
-                    partnerData.appearanceList['appearanceTwo'] }}、
-                {{ partnerData.appearanceList['appearanceThree'] }}的{{ partnerData.appearanceList['appearanceFour']
+                    partnerStore.$state.userPartner.userAppearance[1] }}、
+                {{ partnerStore.$state.userPartner.userAppearance[2] }}的{{
+                    partnerStore.$state.userPartner.userAppearance[3]
                 }}寵物！
-                個性{{ partnerData.traitList['traitOne'] }}、{{ partnerData.traitList['traitTwo'] }}、{{
-                    partnerData.traitList['traitThree'] }}，而且喜愛{{
-                    partnerData.traitList['traitFour'] }}！ </p>
+                個性{{ partnerStore.$state.userPartner.userTraits[0] }}、{{ partnerStore.$state.userPartner.userTraits[1]
+                }}、{{
+                    partnerStore.$state.userPartner.userTraits[2] }}，而且喜愛{{
+                    partnerStore.$state.userPartner.userTraits[3] }}！ </p>
 
         </div>
     </div>
