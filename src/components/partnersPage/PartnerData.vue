@@ -2,6 +2,7 @@
 import { usePartnersStore } from '@/store/usePartnersStore';
 import axios from 'axios';
 const partnerStore = usePartnersStore();
+
 axios.post('http://localhost:3000/partners/photo', {
     "appearanceList": partnerStore.$state.userPartner.userAppearance
 }).then((res) => {

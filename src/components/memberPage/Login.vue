@@ -4,7 +4,6 @@ import Input from '../Input.vue';
 import Button from '../Button.vue';
 import VueRecaptcha from 'vue3-recaptcha2';
 import axios from 'axios';
-import { useCookies } from 'vue3-cookies';
 import { useMemberStore } from '@/store/useMemberStore';
 import { useRouter } from 'vue-router';
 const memberStore = useMemberStore();
@@ -33,8 +32,6 @@ const vueRecaptchaV2 = reactive({
     },
 })
 
-const { cookies } = useCookies();
-
 const loginFunction = async (e) => {
     if (!user.googleToken) {
         alert('請完成驗證')
@@ -48,7 +45,6 @@ const loginFunction = async (e) => {
                 if (res.data.token) {
                     alert(res.data.message)
                     memberStore.setToken(res.data.token)
-                    // cookies.set('token', res.data.token)
                 } else {
                     alert(res.data.message)
                 }

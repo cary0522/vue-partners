@@ -21,7 +21,6 @@ export const useMemberStore = defineStore("member", {
 	},
 	actions: {
 		setToken(newToken) {
-			console.log("token");
 			this.token = newToken;
 		},
 	},

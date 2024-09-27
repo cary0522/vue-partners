@@ -3,8 +3,10 @@ import { RouterLink, RouterView, useRouter } from 'vue-router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faHouse, faUser, faCartShopping, faRankingStar, faPaw, faFlaskVial, faBars } from '@fortawesome/free-solid-svg-icons'
 import { useMemberStore } from '@/store/useMemberStore';
+import { usePartnersStore } from './store/usePartnersStore';
 import { ref } from 'vue';
 const memberStore = useMemberStore();
+const partnerStore = usePartnersStore();
 
 const router = useRouter()
 
@@ -12,7 +14,9 @@ const barsShow = ref(false)
 
 function logOut() {
   localStorage.removeItem('member')
+  localStorage.removeItem('partners')
   memberStore.$reset();
+  partnerStore.$reset();
   router.push('/Member')
 }
 

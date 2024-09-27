@@ -8,9 +8,21 @@ import UserTraits from './UserTraits.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
 import { usePartnersStore } from '@/store/usePartnersStore';
+import { useMemberStore } from '@/store/useMemberStore';
 import router from '@/router';
-const partnersStore = usePartnersStore()
-console.log('partnersStore:', partnersStore.$state)
+const partnersStore = usePartnersStore();
+const memberStore = useMemberStore();
+
+axios.post('http://localhost:3000/partners/made', {
+    "token": memberStore.token
+}).then((res) => {
+    if (res) {
+        partnersStore.$state.userPartner.partnerName = res.data.partnerName;
+        partnersStore.$state.userPartner.userAppearance = res.data.appearanceList;
+        partnersStore.$state.userPartner.userTraits = res.data.traitList;
+        router.push('/partners')
+    }
+})
 
 const data = reactive({
     traitList: [],
@@ -52,7 +64,8 @@ const makeDone = () => {
     axios.post('http://localhost:3000/data/userOptions', {
         "partnerName": data.partnerName,
         "appearanceList": partnersStore.$state.userPartner.userAppearance,
-        "traitsList": partnersStore.$state.userPartner.userTraits
+        "traitsList": partnersStore.$state.userPartner.userTraits,
+        "owner": memberStore.token ? memberStore.token : ''
     })
 }
 

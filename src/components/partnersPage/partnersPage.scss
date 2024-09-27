@@ -62,8 +62,8 @@
             height: 25em;
         }
         #interactive {
-            overflow-x: auto;
             .options-behaviors {
+                width: 30%;
                 margin: 5px;
                 text-align: center;
                 background-color: $colorText;
