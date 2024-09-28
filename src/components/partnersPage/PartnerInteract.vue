@@ -56,7 +56,7 @@ import { usePartnersStore } from '@/store/usePartnersStore';
 const partnerStore = usePartnersStore();
 
 // 回應列表
-const partnerContent = ref(['Hi!', ])
+const partnerContent = ref(['Hi!',])
 const feedbackList = ref([])
 axios.post('http://localhost:3000/partners/traitFeedback', {
     'traitList': partnerStore.$state.userPartner.userTraits
@@ -65,10 +65,19 @@ axios.post('http://localhost:3000/partners/traitFeedback', {
         feedbackList.value.push(res.data[i]['feedback'])
     }
 })
-const clickInteract = () => {
-    let i = Math.floor(Math.random()*4)
-    partnerContent.value.push(feedbackList.value[i])
+// scroll to bottom
+const bottomDiv = ref(null)
+
+const clickInteract = async () => {
+    try {
+        let i = Math.floor(Math.random() * 4)
+        await partnerContent.value.push(feedbackList.value[i])
+        bottomDiv.value.scrollTo(0, bottomDiv.value.scrollHeight);
+    } catch (err) {
+        console.log('Click err:', err)
+    }
 }
+
 
 </script>
 
@@ -83,8 +92,11 @@ const clickInteract = () => {
                     <div class="flex justify-between px-4 py-2">
                         <PhoneTitle></PhoneTitle>
                     </div>
-                    <div class="w-full text-start text-2xl" id="interactive-partner-name"></div>
-                    <div class="py-4 my-2" id="interactive-partner-feedback">
+                    <div class="mx-4 font-bold tracking-widest w-full text-start text-2xl"
+                        id="interactive-partner-name">
+                        {{ partnerStore.$state.userPartner.partnerName }}
+                    </div>
+                    <div class="py-4 my-2" ref="bottomDiv" id="interactive-partner-feedback">
                         <div class="flex justify-start my-2" v-for="item in partnerContent">
                             <div class="iphone-pic ms-2 me-0" id="interactive-partner-photo">
                                 <img :src=partnerStore.$state.photoUrl alt="" class="rounded-full">

@@ -24,16 +24,14 @@ axios.post('http://localhost:3000/partners/photo', {
         </div>
         <div class="w-full p-12 md:p-8 lg:p-4" id="info">
             <p class='text-xl m-0 tracking-widest'>{{ partnerStore.$state.userPartner.partnerName }}，是一位{{
-                partnerStore.$state.userPartner.userAppearance[0] }}風格、
-                具有{{
-                    partnerStore.$state.userPartner.userAppearance[1] }}、
-                {{ partnerStore.$state.userPartner.userAppearance[2] }}的{{
+                partnerStore.$state.userPartner.userAppearance[0] }}風格、具有{{
+                    partnerStore.$state.userPartner.userAppearance[1] }}、{{
+                    partnerStore.$state.userPartner.userAppearance[2] }}的{{
                     partnerStore.$state.userPartner.userAppearance[3]
-                }}寵物！
-                個性{{ partnerStore.$state.userPartner.userTraits[0] }}、{{ partnerStore.$state.userPartner.userTraits[1]
-                }}、{{
-                    partnerStore.$state.userPartner.userTraits[2] }}，而且喜愛{{
-                    partnerStore.$state.userPartner.userTraits[3] }}！ </p>
+                }}寵物！個性{{ partnerStore.$state.userPartner.userTraits[0] }}、{{
+                    partnerStore.$state.userPartner.userTraits[1]
+                }}、{{ partnerStore.$state.userPartner.userTraits[2]
+                }}，而且喜愛{{ partnerStore.$state.userPartner.userTraits[3] }}！ </p>
 
         </div>
     </div>

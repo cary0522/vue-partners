@@ -57,9 +57,12 @@
                 height: 40px;
             }
         }
+        #interactive-partner-name{
+            color: $colorText;
+        }
         #interactive-partner-feedback {
             overflow-y: auto;
-            height: 25em;
+            height: 13em;
         }
         #interactive {
             .options-behaviors {
